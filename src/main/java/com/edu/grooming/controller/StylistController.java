@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.edu.grooming.dao.Stylist;
-import com.edu.grooming.dao.User;
 import com.edu.grooming.service.StylistService;
-import com.edu.grooming.service.UserService;
 
 @RestController
 public class StylistController {
