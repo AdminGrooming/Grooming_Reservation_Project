@@ -1,11 +1,18 @@
 package com.edu.grooming.dao;
 
+
+import java.util.Set;
+
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 
 @Entity
 public class User {
@@ -19,10 +26,12 @@ public class User {
 	private String  userphonenumber;
 	private String  userpassword;
 	
-	//Made by Surendharan for Address..............................
-	@OneToOne(mappedBy="user", cascade=CascadeType.ALL)
-	private Address address;
-	//.............................................................
+
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="user", cascade=CascadeType.ALL)
+	private Set<Address> address;
+
 	
 	public User() {
 		super();
@@ -87,14 +96,15 @@ public class User {
 		this.userpassword = userpassword;
 	}
 	
-	//Made By Surendharan for Address..............................
-	public Address getAddress() {
+	public Set<Address> getAddress() {
 		return address;
 	}
-	public void setAddress(Address address) {
+
+	public void setAddress(Set<Address> address) {
 		this.address = address;
 	}
-	//..............................................................
+	
+
 
 	@Override
 	public String toString() {
@@ -102,4 +112,5 @@ public class User {
 				+ ", useremail=" + useremail + ", userphonenumber=" + userphonenumber + ", userpassword=" + userpassword
 				+ "]";
 	}
+
 }
