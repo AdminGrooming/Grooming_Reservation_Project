@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -15,8 +16,9 @@ public class Service {
 	private String servicdesc;
 	private double serviceprice;
 	
-//	@ManyToOne
-//	private Salon salon;
+	@ManyToOne
+	@JoinColumn(name = "salonid")
+	private Salon salon;
 
 	public Service() {
 		super();
@@ -67,6 +69,16 @@ public class Service {
 		return "Service [serviceid=" + serviceid + ", servicename=" + servicename + ", servicdesc=" + servicdesc
 				+ ", serviceprice=" + serviceprice + "]";
 	}
+
+	public Salon getSalon() {
+		return salon;
+	}
+
+	public void setSalon(Salon salon) {
+		this.salon = salon;
+	}
+	
+	
 
 	
 }
