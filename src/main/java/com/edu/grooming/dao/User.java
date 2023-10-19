@@ -1,9 +1,11 @@
 package com.edu.grooming.dao;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -16,6 +18,11 @@ public class User {
 	private String  useremail;
 	private String  userphonenumber;
 	private String  userpassword;
+	
+	//Made by Surendharan for Address..............................
+	@OneToOne(mappedBy="user", cascade=CascadeType.ALL)
+	private Address address;
+	//.............................................................
 	
 	public User() {
 		super();
@@ -79,6 +86,15 @@ public class User {
 	public void setUserpassword(String userpassword) {
 		this.userpassword = userpassword;
 	}
+	
+	//Made By Surendharan for Address..............................
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	//..............................................................
 
 	@Override
 	public String toString() {
@@ -86,9 +102,4 @@ public class User {
 				+ ", useremail=" + useremail + ", userphonenumber=" + userphonenumber + ", userpassword=" + userpassword
 				+ "]";
 	}
-	
-	
-	
-	
-	
 }

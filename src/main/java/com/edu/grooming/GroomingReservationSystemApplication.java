@@ -8,8 +8,6 @@ public class GroomingReservationSystemApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GroomingReservationSystemApplication.class, args);
-		//new changes to the github
-		//grooming reservation system
-		//Checking for Surendharan...
+
 	}
 }
