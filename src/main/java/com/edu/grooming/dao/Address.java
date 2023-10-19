@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+
 import javax.persistence.ManyToOne;
 
 
@@ -33,9 +34,10 @@ public class Address {
 	
 	@Column(name="Country", length=30, nullable=false)
 	private String country;
-	
+
 	@ManyToOne
 	@JoinColumn(name="userid")
+
 	private User user;
 
 	

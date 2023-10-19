@@ -1,6 +1,8 @@
 package com.edu.grooming.dao;
 
+
 import java.util.Set;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -8,8 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 @Entity
@@ -24,10 +26,12 @@ public class User {
 	private String  userphonenumber;
 	private String  userpassword;
 	
+
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="user", cascade=CascadeType.ALL)
 	private Set<Address> address;
+
 	
 	public User() {
 		super();
@@ -101,11 +105,12 @@ public class User {
 	}
 	
 
+
 	@Override
 	public String toString() {
 		return "User [userid=" + userid + ", userfirstname=" + userfirstname + ", userlastname=" + userlastname
 				+ ", useremail=" + useremail + ", userphonenumber=" + userphonenumber + ", userpassword=" + userpassword
 				+ "]";
 	}
-	
+
 }
