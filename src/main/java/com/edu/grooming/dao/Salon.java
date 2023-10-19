@@ -1,9 +1,17 @@
 package com.edu.grooming.dao;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import ch.qos.logback.core.subst.Token.Type;
 
 @Entity
 public class Salon {
@@ -11,6 +19,7 @@ public class Salon {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer salonid;
+	
 	private String  salonname;
 	private String  salonaddress;
 	private String  saloncity;
@@ -22,6 +31,14 @@ public class Salon {
 	private String  salondescription;
 	private String  salonrating;
 	private String  salonpassword;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "salon", cascade = CascadeType.ALL)
+	private List<Stylist> stylist;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "salon", cascade = CascadeType.ALL)
+	private List<Service> service;
 	
 	public Salon() {
 		super();

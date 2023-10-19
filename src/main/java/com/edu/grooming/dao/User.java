@@ -14,6 +14,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
+//Comment
+
 @Entity
 public class User {
 

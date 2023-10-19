@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Stylist {
@@ -12,7 +14,6 @@ public class Stylist {
 	@GeneratedValue( strategy = GenerationType.IDENTITY)
 	private Integer stylistid;
 	
-	private Integer salonid;
 	private String firstname;
 	private String lastname;
 	private String stylistphonenum;
@@ -20,10 +21,20 @@ public class Stylist {
 	private String stylistspecialization;
 	private Integer stylistrating;
 	
-	public Stylist(Integer salonid, String firstname, String lastname, String stylistphonenum,
+	@ManyToOne
+	@JoinColumn(name="salonid")
+	private Salon salon; 
+	
+	
+	public Stylist() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Stylist(String firstname, String lastname, String stylistphonenum,
 			String stylistemail, String stylistspecialization, Integer stylistrating) {
 		super();
-		this.salonid = salonid;
+		
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.stylistphonenum = stylistphonenum;
@@ -40,13 +51,6 @@ public class Stylist {
 		this.stylistid = stylistid;
 	}
 
-	public Integer getSalonid() {
-		return salonid;
-	}
-
-	public void setSalonid(Integer salonid) {
-		this.salonid = salonid;
-	}
 
 	public String getFirstname() {
 		return firstname;
@@ -98,15 +102,19 @@ public class Stylist {
 
 	@Override
 	public String toString() {
-		return "Stylist [stylistid=" + stylistid + ", salonid=" + salonid + ", firstname=" + firstname + ", lastname="
+		return "Stylist [stylistid=" + stylistid  + ", firstname=" + firstname + ", lastname="
 				+ lastname + ", stylistphonenum=" + stylistphonenum + ", stylistemail=" + stylistemail
 				+ ", stylistspecialization=" + stylistspecialization + ", stylistrating=" + stylistrating + "]";
 	}
 
-	public Stylist() {
-		super();
-		// TODO Auto-generated constructor stub
+	public Salon getSalon() {
+		return salon;
 	}
+
+	public void setSalon(Salon salon) {
+		this.salon = salon;
+	}
+
 	
 	
 

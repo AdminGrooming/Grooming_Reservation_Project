@@ -15,10 +15,10 @@ import javax.persistence.ManyToOne;
 public class Address {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer addressId;
+	private Integer addressid;
 	
 	@Column(name="HouseNumber", length=5, nullable=false)
-	private String houseNo;
+	private String houseno;
 	
 	@Column(name="Street", length=100, nullable=false)
 	private String street;
@@ -40,18 +40,14 @@ public class Address {
 
 	private User user;
 
-	
 	public Address() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public Address(Integer addressId, String houseNo, String street, String city, String state, String zipcode,
-			String country) {
+	public Address(String houseno, String street, String city, String state, String zipcode, String country) {
 		super();
-		this.addressId = addressId;
-		this.houseNo = houseNo;
+		this.houseno = houseno;
 		this.street = street;
 		this.city = city;
 		this.state = state;
@@ -59,24 +55,26 @@ public class Address {
 		this.country = country;
 	}
 
-
-	public Integer getAddressId() {
-		return addressId;
-	}
-	public void setAddressId(Integer addressId) {
-		this.addressId = addressId;
+	public Integer getAddressid() {
+		return addressid;
 	}
 
-	public String getHouseNo() {
-		return houseNo;
+	public void setAddressid(Integer addressid) {
+		this.addressid = addressid;
 	}
-	public void setHouseNo(String houseNo) {
-		this.houseNo = houseNo;
+
+	public String getHouseno() {
+		return houseno;
+	}
+
+	public void setHouseno(String houseno) {
+		this.houseno = houseno;
 	}
 
 	public String getStreet() {
 		return street;
 	}
+
 	public void setStreet(String street) {
 		this.street = street;
 	}
@@ -84,6 +82,7 @@ public class Address {
 	public String getCity() {
 		return city;
 	}
+
 	public void setCity(String city) {
 		this.city = city;
 	}
@@ -91,6 +90,7 @@ public class Address {
 	public String getState() {
 		return state;
 	}
+
 	public void setState(String state) {
 		this.state = state;
 	}
@@ -98,6 +98,7 @@ public class Address {
 	public String getZipcode() {
 		return zipcode;
 	}
+
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
@@ -105,6 +106,7 @@ public class Address {
 	public String getCountry() {
 		return country;
 	}
+
 	public void setCountry(String country) {
 		this.country = country;
 	}
@@ -112,14 +114,19 @@ public class Address {
 	public User getUser() {
 		return user;
 	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Address [addressId=" + addressId + ", houseNo=" + houseNo + ", street=" + street + ", city=" + city
+		return "Address [addressid=" + addressid + ", houseno=" + houseno + ", street=" + street + ", city=" + city
 				+ ", state=" + state + ", zipcode=" + zipcode + ", country=" + country + "]";
 	}
+	
+	
+
+	
+	
 }
