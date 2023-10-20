@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.edu.grooming.dao.Salon;
-import com.edu.grooming.repository.SalonRepository;
 import com.edu.grooming.service.SalonService;
 
 @RestController
@@ -18,17 +17,26 @@ public class SalonController {
 
 	@Autowired
 	private SalonService salonService;
-	
-	@PostMapping("/saveSalon") // http://localhost:8990/saveSalon
+
+	@PostMapping("/saveSalon") //http://localhost:8990/saveSalon
 	public Salon saveSalon(@RequestBody Salon salon) {
 		return salonService.saveSalon(salon);
 		
 	}
+
+
 	@GetMapping("/getSalon")  // http://localhost:8990/getSalon
 	public List<Salon> getSalon(){
 		return salonService.getSalon();
 		
 	}
+
+
+	@GetMapping("/getSalonByName/name/{name}") // http://localhost:8990/getSalonByName/name/
+	public Salon getSalonByName(@PathVariable("name") String salonname) {
+		return salonService.getSalonByName(salonname);
+	}
+	
 	
 	@GetMapping("/getSalonByName/name/{name}") // http://localhost:8990/getSalonByName/name/
 	public Salon getSalonByName(@PathVariable("name") String salonname) {
@@ -36,4 +44,5 @@ public class SalonController {
 		
 	}
 	
+
 }

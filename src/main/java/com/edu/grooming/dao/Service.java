@@ -70,6 +70,7 @@ public class Service {
 				+ ", serviceprice=" + serviceprice + "]";
 	}
 
+
 	public Salon getSalon() {
 		return salon;
 	}
@@ -77,7 +78,11 @@ public class Service {
 	public void setSalon(Salon salon) {
 		this.salon = salon;
 	}
-	
+
+
+	public void updateServiceSalon(Salon salon2) {
+		this.salon = salon2;
+	}
 	
 
 	

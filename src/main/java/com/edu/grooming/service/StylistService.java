@@ -8,4 +8,6 @@ public interface StylistService {
 
 	Stylist addStylist(Stylist stylist);
 
+	Stylist updateStylistSalon(Integer stylistid, Integer salonid);
+
 }
