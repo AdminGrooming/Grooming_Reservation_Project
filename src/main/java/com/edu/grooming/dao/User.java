@@ -1,22 +1,48 @@
 package com.edu.grooming.dao;
 
+<<<<<<< Updated upstream
+=======
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+>>>>>>> Stashed changes
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+<<<<<<< Updated upstream
+=======
+import javax.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+//Comment
+>>>>>>> Stashed changes
 
 @Entity
 public class User {
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer userid;
+<<<<<<< Updated upstream
 	private String  userfirstname;
 	private String  userlastname;
 	private String  useremail;
 	private String  userphonenumber;
 	private String  userpassword;
 	
+=======
+	private String userfirstname;
+	private String userlastname;
+	private String useremail;
+	private String userphonenumber;
+	private String userpassword;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private Set<Address> address;
+
+>>>>>>> Stashed changes
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -79,6 +105,17 @@ public class User {
 	public void setUserpassword(String userpassword) {
 		this.userpassword = userpassword;
 	}
+<<<<<<< Updated upstream
+=======
+
+	public Set<Address> getAddress() {
+		return address;
+	}
+
+	public void setAddress(Set<Address> address) {
+		this.address = address;
+	}
+>>>>>>> Stashed changes
 
 	@Override
 	public String toString() {

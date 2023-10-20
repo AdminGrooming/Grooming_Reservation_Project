@@ -1,0 +1,206 @@
+package com.edu.grooming.dao;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+public class Salon {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer salonid;
+
+	@NotBlank(message="Salon Name Should not be null")
+	@Column(name="Salon Name", length=50, nullable=false)
+	private String salonname;
+	
+	@NotBlank(message="Salon Address Should not be null")
+	@Column(name="Salon Address", length=200, nullable=false)
+	private String salonaddress;
+	
+	@NotBlank(message="Salon City Should not be null")
+	@Column(name="Salon City", length=20, nullable=false)
+	private String saloncity;
+	
+	@NotBlank(message="Salon Pincode Should not be null")
+	@Pattern(message = "Invalid Pincode",regexp = "^[1-9]{1}[0-9]{2}\\s{0, 1}[0-9]{3}$")
+	private String salonpincode;
+	
+	@NotBlank(message="Salon State Should not be null")
+	@Column(name="Salon State", length=50, nullable=false)
+	private String salonstate;
+	
+	@NotBlank(message="Salon phone Number Should not be null")
+	@Pattern(message = "Invalid Phone Number", regexp = "^[6-9]\\d{9}$")
+	@Column(unique = true)
+	private String salonphone;
+	
+	@NotBlank(message="Salon Email Should not be null")
+	@Email(message = "Invalid Email", regexp="^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\\.[a-zA-Z.]{2,5}")
+	@Column(unique = true)
+	private String salonemailid;
+	
+	@NotBlank(message="Salon Opening Time Should not be null")
+	@Pattern(message="Invalid Time",regexp= "([01]?[0-9]|2[0-3]):[0-5][0-9]")
+	private String salonopeninghours;
+	
+	@NotBlank(message="Salon description Should not be null")
+	@Column(name="Salon description", length=500, nullable=false)
+	private String salondescription;
+	
+	@NotBlank(message="Salon Rating Should not be null")
+	@Column(name="Salon rating", length=5, nullable=false)
+	private String salonrating;
+	
+	@Pattern(message = "Invalid Salon Password", regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}$")
+	@Column(name="Salon Password", length=50, nullable=false)
+	private String salonpassword;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "salon", cascade = CascadeType.ALL)
+	private List<Stylist> stylist;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "salon", cascade = CascadeType.ALL)
+	private List<Service> service;
+
+	public Salon() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Salon(String salonname, String salonaddress, String saloncity, String salonpincode, String salonstate,
+			String salonphone, String salonemailid, String salonopeninghours, String salondescription,
+			String salonrating, String salonpassword) {
+		super();
+		this.salonname = salonname;
+		this.salonaddress = salonaddress;
+		this.saloncity = saloncity;
+		this.salonpincode = salonpincode;
+		this.salonstate = salonstate;
+		this.salonphone = salonphone;
+		this.salonemailid = salonemailid;
+		this.salonopeninghours = salonopeninghours;
+		this.salondescription = salondescription;
+		this.salonrating = salonrating;
+		this.salonpassword = salonpassword;
+	}
+
+	public Integer getSalonid() {
+		return salonid;
+	}
+
+	public void setSalonid(Integer salonid) {
+		this.salonid = salonid;
+	}
+
+	public String getSalonname() {
+		return salonname;
+	}
+
+	public void setSalonname(String salonname) {
+		this.salonname = salonname;
+	}
+
+	public String getSalonaddress() {
+		return salonaddress;
+	}
+
+	public void setSalonaddress(String salonaddress) {
+		this.salonaddress = salonaddress;
+	}
+
+	public String getSaloncity() {
+		return saloncity;
+	}
+
+	public void setSaloncity(String saloncity) {
+		this.saloncity = saloncity;
+	}
+
+	public String getSalonpincode() {
+		return salonpincode;
+	}
+
+	public void setSalonpincode(String salonpincode) {
+		this.salonpincode = salonpincode;
+	}
+
+	public String getSalonstate() {
+		return salonstate;
+	}
+
+	public void setSalonstate(String salonstate) {
+		this.salonstate = salonstate;
+	}
+
+	public String getSalonphone() {
+		return salonphone;
+	}
+
+	public void setSalonphone(String salonPhone) {
+		this.salonphone = salonPhone;
+	}
+
+	public String getSalonemailid() {
+		return salonemailid;
+	}
+
+	public void setSalonemailid(String salonemailid) {
+		this.salonemailid = salonemailid;
+	}
+
+	public String getSalonopeninghours() {
+		return salonopeninghours;
+	}
+
+	public void setSalonopeninghours(String salonopeninghours) {
+		this.salonopeninghours = salonopeninghours;
+	}
+
+	public String getSalondescription() {
+		return salondescription;
+	}
+
+	public void setSalondescription(String salondescription) {
+		this.salondescription = salondescription;
+	}
+
+	public String getSalonrating() {
+		return salonrating;
+	}
+
+	public void setSalonrating(String salonrating) {
+		this.salonrating = salonrating;
+	}
+
+	public String getSalonpassword() {
+		return salonpassword;
+	}
+
+	public void setSalonpassword(String salonpassword) {
+		this.salonpassword = salonpassword;
+	}
+
+	@Override
+	public String toString() {
+		return "Salon [salonid=" + salonid + ", salonname=" + salonname + ", salonaddress=" + salonaddress
+				+ ", saloncity=" + saloncity + ", salonpincode=" + salonpincode + ", salonstate=" + salonstate
+				+ ", salonPhone=" + salonphone + ", salonemailid=" + salonemailid + ", salonopeninghours="
+				+ salonopeninghours + ", salondescription=" + salondescription + ", salonrating=" + salonrating
+				+ ", salonpassword=" + salonpassword + "]";
+	}
+
+}

@@ -1,32 +1,52 @@
 package com.edu.grooming.dao;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Service {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer serviceid;
+
+	@NotBlank(message = "Service Name Should not be null")
+	@Column(name = "Service Name", length = 100, nullable = false)
 	private String servicename;
-	private String servicdesc;
+
+	@Column(name = "Service Description", length = 255)
+	private String servicedescription;
+
+	@Min(500)
+	@Max(200000)
+	@Column(nullable = false,name="Service Price")
 	private double serviceprice;
+<<<<<<< Updated upstream
 	
 //	@ManyToOne
 //	private Salon salon;
+=======
+
+	@ManyToOne
+	@JoinColumn(name = "salonid")
+	private Salon salon;
+>>>>>>> Stashed changes
 
 	public Service() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Service(String servicename, String servicdesc, double serviceprice) {
+	public Service(String servicename, String servicedescription, double serviceprice) {
 		super();
 		this.servicename = servicename;
-		this.servicdesc = servicdesc;
+		this.servicedescription = servicedescription;
 		this.serviceprice = serviceprice;
 	}
 
@@ -47,11 +67,11 @@ public class Service {
 	}
 
 	public String getServicdesc() {
-		return servicdesc;
+		return servicedescription;
 	}
 
-	public void setServicdesc(String servicdesc) {
-		this.servicdesc = servicdesc;
+	public void setServicdesc(String servicedescription) {
+		this.servicedescription = servicedescription;
 	}
 
 	public double getServiceprice() {
@@ -64,9 +84,24 @@ public class Service {
 
 	@Override
 	public String toString() {
-		return "Service [serviceid=" + serviceid + ", servicename=" + servicename + ", servicdesc=" + servicdesc
+		return "Service [serviceid=" + serviceid + ", servicename=" + servicename + ", servicdesc=" + servicedescription
 				+ ", serviceprice=" + serviceprice + "]";
 	}
 
+<<<<<<< Updated upstream
 	
+=======
+	public Salon getSalon() {
+		return salon;
+	}
+
+	public void setSalon(Salon salon) {
+		this.salon = salon;
+	}
+
+	public void updateServiceSalon(Salon salon2) {
+		this.salon = salon2;
+	}
+
+>>>>>>> Stashed changes
 }
