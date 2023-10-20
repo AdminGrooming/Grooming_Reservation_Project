@@ -1,11 +1,10 @@
 package com.edu.grooming.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-<<<<<<< Updated upstream
+
 import org.springframework.stereotype.Controller;
-=======
+
 import org.springframework.web.bind.annotation.PathVariable;
->>>>>>> Stashed changes
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;

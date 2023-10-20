@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -15,8 +16,9 @@ public class Service {
 	private String servicdesc;
 	private double serviceprice;
 	
-//	@ManyToOne
-//	private Salon salon;
+	@ManyToOne
+	@JoinColumn(name = "salonid")
+	private Salon salon;
 
 	public Service() {
 		super();
@@ -68,8 +70,7 @@ public class Service {
 				+ ", serviceprice=" + serviceprice + "]";
 	}
 
-<<<<<<< Updated upstream
-=======
+
 	public Salon getSalon() {
 		return salon;
 	}
@@ -78,12 +79,11 @@ public class Service {
 		this.salon = salon;
 	}
 
+
 	public void updateServiceSalon(Salon salon2) {
 		this.salon = salon2;
 	}
 	
-	
 
->>>>>>> Stashed changes
 	
 }
