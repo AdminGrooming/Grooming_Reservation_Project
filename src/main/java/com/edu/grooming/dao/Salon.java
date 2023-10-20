@@ -13,6 +13,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import ch.qos.logback.core.subst.Token.Type;
 
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
+
+
 @Entity
 public class Salon {
 	
