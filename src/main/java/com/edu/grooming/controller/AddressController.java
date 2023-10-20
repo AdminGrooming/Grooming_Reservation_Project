@@ -10,7 +10,7 @@ import com.edu.grooming.service.AddressService;
 
 @RestController
 public class AddressController {
-	
+
 	@Autowired
 	private AddressService addressService;
 	
@@ -18,7 +18,6 @@ public class AddressController {
 	public Address addAddress(@RequestBody Address address) {
 		return addressService.addAddress(address);
 	}
-	
-	
-	
+
+
 }

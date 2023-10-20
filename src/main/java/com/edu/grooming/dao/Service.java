@@ -68,5 +68,22 @@ public class Service {
 				+ ", serviceprice=" + serviceprice + "]";
 	}
 
+<<<<<<< Updated upstream
+=======
+	public Salon getSalon() {
+		return salon;
+	}
+
+	public void setSalon(Salon salon) {
+		this.salon = salon;
+	}
+
+	public void updateServiceSalon(Salon salon2) {
+		this.salon = salon2;
+	}
+	
+	
+
+>>>>>>> Stashed changes
 	
 }

@@ -13,12 +13,12 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-	
+
 	@PostMapping("/addUser") //http://localhost:8990/addUser
 	public User addUser(@RequestBody User user) {
 		return userService.addUser(user);
-		
+
 	}
 
-	
+
 }

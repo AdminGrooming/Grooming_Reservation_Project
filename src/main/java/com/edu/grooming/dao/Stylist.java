@@ -107,7 +107,18 @@ public class Stylist {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+<<<<<<< Updated upstream
 	
 	
+=======
+
+	public void setSalon(Salon salon) {
+		this.salon = salon;
+	}
+
+	public void updateStylistSalon(Salon salon2) {
+		this.salon = salon2;
+	}
+>>>>>>> Stashed changes
 
 }
