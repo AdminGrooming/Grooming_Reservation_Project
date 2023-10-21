@@ -8,8 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 
 import javax.persistence.ManyToOne;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+
 
 @Entity
 public class Address {
@@ -44,6 +46,12 @@ public class Address {
 
 	@ManyToOne
 	@JoinColumn(name = "userid")
+
+	
+
+	@ManyToOne
+	@JoinColumn(name="userid")
+
 
 	private User user;
 

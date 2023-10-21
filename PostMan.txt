@@ -1,0 +1,53 @@
+********* Add User *********
+{
+    "userid": 1,
+    "userfirstname": "Akash",
+    "userlastname": "Hedau",
+    "useremail": "akash@gmail.com",
+    "userphonenumber": "8308985621",
+    "userpassword": "1234"
+}
+
+********* Add Address *********
+{
+    "houseno": "6",
+    "street": " Solapur street",
+    "city": "Solapur",
+    "state": "Maharshtra",
+    "zipcode": "413003",
+    "country": "India"
+}
+
+********* Add Address *********
+
+{
+    "salonname" : "Vaishnavi's salon",
+    "salonaddress": ",saat rasta, solapur",
+    "saloncity": "Solapur",
+    "salonpincode": "413003",
+    "salonstate": "maha",
+    "salonphone": "8308985621",
+    "salonemailid": "salon1@gmail.com",
+    "salonopeninghours": "2001-01-01",
+    "salondescription": "testing salon",
+    "salonrating": "5",
+    "salonpassword": "salon123"
+}
+
+********* Add Address *********
+
+{
+    "firstname" : "Akash",
+    "lastname" : "Hedau",
+    "stylistphonenum" : "8308985621",
+    "stylistemail" : "akash@gmail.com",
+    "stylistspecialization" : "fire cutting",
+    "stylistrating" : "10"
+}
+
+********* Add Address *********
+{
+    "servicename" : "makeup",
+    "servicdesc" : "full free makeup",
+    "serviceprice" : "10000"
+}

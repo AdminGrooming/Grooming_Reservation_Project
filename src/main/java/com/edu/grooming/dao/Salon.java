@@ -3,12 +3,15 @@ package com.edu.grooming.dao;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -76,7 +79,8 @@ public class Salon {
 	@OneToMany(mappedBy = "salon", cascade = CascadeType.ALL)
 	private List<Service> service;
 
-	public Salon() {
+
+public Salon() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -202,5 +206,6 @@ public class Salon {
 				+ salonopeninghours + ", salondescription=" + salondescription + ", salonrating=" + salonrating
 				+ ", salonpassword=" + salonpassword + "]";
 	}
+
 
 }

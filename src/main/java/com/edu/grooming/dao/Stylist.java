@@ -115,6 +115,7 @@ public class Stylist {
 		this.salon = salon;
 	}
 
+
 	public void updateStylistSalon(Salon salon2) {
 		this.salon = salon2;
 	}

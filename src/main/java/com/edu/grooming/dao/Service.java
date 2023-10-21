@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -27,16 +28,17 @@ public class Service {
 	@Max(200000)
 	@Column(nullable = false,name="Service Price")
 	private double serviceprice;
-<<<<<<< Updated upstream
-	
+
 //	@ManyToOne
 //	private Salon salon;
-=======
+
 
 	@ManyToOne
 	@JoinColumn(name = "salonid")
 	private Salon salon;
->>>>>>> Stashed changes
+
+	
+
 
 	public Service() {
 		super();
@@ -88,9 +90,8 @@ public class Service {
 				+ ", serviceprice=" + serviceprice + "]";
 	}
 
-<<<<<<< Updated upstream
-	
-=======
+
+
 	public Salon getSalon() {
 		return salon;
 	}
@@ -99,9 +100,12 @@ public class Service {
 		this.salon = salon;
 	}
 
+
 	public void updateServiceSalon(Salon salon2) {
 		this.salon = salon2;
 	}
+	
 
->>>>>>> Stashed changes
+
+	
 }

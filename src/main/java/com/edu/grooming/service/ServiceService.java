@@ -6,4 +6,6 @@ public interface ServiceService {
 
 	Service saveService(Service service);
 
+	Service updateServiceSalon(Integer serviceid, Integer salonid);
+
 }
