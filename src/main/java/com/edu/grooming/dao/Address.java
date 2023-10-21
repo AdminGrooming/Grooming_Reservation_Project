@@ -44,16 +44,9 @@ public class Address {
 	@Column(name = "Country", length = 30, nullable = false)
 	private String country;
 
-	@ManyToOne
-	@JoinColumn(name = "userid")
-
-	
-
-	@ManyToOne
-	@JoinColumn(name="userid")
-
-
-	private User user;
+@ManyToOne
+@JoinColumn(name="userid")
+private User user;
 
 	public Address() {
 		super();
