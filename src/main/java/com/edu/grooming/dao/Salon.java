@@ -39,6 +39,7 @@ public class Salon {
 	
 	@NotBlank(message="Salon Pincode Should not be null")
 	@Pattern(message = "Invalid Pincode",regexp = "^[1-9]{1}[0-9]{2}\\s{0, 1}[0-9]{3}$")
+	@Column(name="Pincode",length=8)
 	private String salonpincode;
 	
 	@NotBlank(message="Salon State Should not be null")
@@ -47,12 +48,12 @@ public class Salon {
 	
 	@NotBlank(message="Salon phone Number Should not be null")
 	@Pattern(message = "Invalid Phone Number", regexp = "^[6-9]\\d{9}$")
-	@Column(unique = true)
+	@Column(unique = true,name="Mobile Number",length=10)
 	private String salonphone;
 	
 	@NotBlank(message="Salon Email Should not be null")
 	@Email(message = "Invalid Email", regexp="^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\\.[a-zA-Z.]{2,5}")
-	@Column(unique = true)
+	@Column(unique = true,name="Email Id",length=30)
 	private String salonemailid;
 	
 	@NotBlank(message="Salon Opening Time Should not be null")
