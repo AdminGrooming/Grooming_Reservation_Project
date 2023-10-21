@@ -1,11 +1,15 @@
 package com.edu.grooming.dao;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 @Entity
 public class Stylist {
@@ -14,11 +18,32 @@ public class Stylist {
 	@GeneratedValue( strategy = GenerationType.IDENTITY)
 	private Integer stylistid;
 	
+	@NotBlank(message="Stylist name Should not be null")
+	@Pattern(message = "Invalid First Name", regexp = "^[A-Za-z]+$")
+	@Column(name="First Name",length=30)
 	private String firstname;
+	
+	@NotBlank(message="Stylist name Should not be null")
+	@Pattern(message = "Invalid Last Name", regexp = "^[A-Za-z]+$")
+	@Column(name="Last Name",length=30,nullable=false)
 	private String lastname;
+	
+	@NotBlank(message="Stylist phone Number Should not be null")
+	@Pattern(message = "Invalid Phone Number", regexp = "^[6-9]\\d{9}$")
+	@Column(unique = true,name="Mobile number",length=10)
 	private String stylistphonenum;
+	
+	@NotBlank(message="Stylist Email Should not be null")
+	@Email(message = "Invalid Email", regexp="^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\\.[a-zA-Z.]{2,5}")
+	@Column(unique = true,name="Email id",length=30)
 	private String stylistemail;
+	
+	@NotBlank(message="Stylist specialization Should not be null")
+	@Column(name="Stylist Specialization", nullable=false)
 	private String stylistspecialization;
+	
+	@NotBlank(message="Stylist Rating Should not be null")
+	@Column(name="Stylist Rating", length=5, nullable=false)
 	private Integer stylistrating;
 	
 	@ManyToOne
