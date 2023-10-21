@@ -3,12 +3,24 @@ package com.edu.grooming.dao;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+
+
+import java.util.Set;
+
 
 import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import javax.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+//Comment
+
 import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -16,18 +28,26 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 //Comment
 
+
 @Entity
 public class User {
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer userid;
+
 	private String  userfirstname;
 	private String  userlastname;
 	private String  useremail;
 	private String  userphonenumber;
 	private String  userpassword;
-	
+
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private Set<Address> address;
+
+
 
 	
 	@JsonIgnore
@@ -35,6 +55,7 @@ public class User {
 	private Set<Address> address;
 
 	
+
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -97,7 +118,7 @@ public class User {
 	public void setUserpassword(String userpassword) {
 		this.userpassword = userpassword;
 	}
-	
+
 	public Set<Address> getAddress() {
 		return address;
 	}
@@ -105,7 +126,6 @@ public class User {
 	public void setAddress(Set<Address> address) {
 		this.address = address;
 	}
-	
 
 
 	@Override
