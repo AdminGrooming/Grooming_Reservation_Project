@@ -36,7 +36,15 @@ public class Address {
 	private String country;
 
 	@ManyToOne
+<<<<<<< Updated upstream
 	@JoinColumn(name="userid")
+=======
+	@JoinColumn(name = "userid")
+
+	
+
+	
+>>>>>>> Stashed changes
 
 	private User user;
 
