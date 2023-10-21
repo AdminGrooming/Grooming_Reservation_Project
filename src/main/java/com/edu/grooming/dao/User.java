@@ -43,9 +43,9 @@ public class User {
 	private String  userpassword;
 
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-	private Set<Address> address;
+//	@JsonIgnore
+//	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+//	private Set<Address> address;
 
 
 
