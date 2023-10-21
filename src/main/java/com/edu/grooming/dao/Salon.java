@@ -56,7 +56,7 @@ public class Salon {
 	private String salonemailid;
 	
 	@NotBlank(message="Salon Opening Time Should not be null")
-	@Pattern(message="Invalid Time",regexp= "([01]?[0-9]|2[0-3]):[0-5][0-9]")
+	@Pattern(message="Invalid Time",regexp="^(mon|tue|wed|thu|fri)\\-(mon|tue|wed|thu|fri)\\s+\\d{1,2}:\\d{2}-\\d{1,2}:\\d{2}$")
 	private String salonopeninghours;
 	
 	@NotBlank(message="Salon description Should not be null")
@@ -68,7 +68,7 @@ public class Salon {
 	private String salonrating;
 	
 	@Pattern(message = "Invalid Salon Password", regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}$")
-	@Column(name="Salon Password", length=50, nullable=false)
+	@Column(name="Salon Password", length=20, nullable=false)
 	private String salonpassword;
 
 	@JsonIgnore
