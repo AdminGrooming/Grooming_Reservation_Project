@@ -9,44 +9,44 @@ import javax.persistence.JoinColumn;
 
 import javax.persistence.ManyToOne;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 
 @Entity
 public class Address {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer addressid;
-	
-	@Column(name="HouseNumber", length=5, nullable=false)
+
+	@Pattern(message = "invalid House number", regexp = "^[1-9]\\d*(?:[ -]?(?:[a-zA-Z]+|[1-9]\\d*))?$")
+	@NotBlank(message = "House Number Should not be null")
+	@Column(name = "HouseNumber", nullable = false)
 	private String houseno;
-	
-	@Column(name="Street", length=100, nullable=false)
+
+	@NotBlank(message = "Street Should not be null")
+	@Column(name = "Street", length = 100, nullable = false)
 	private String street;
-	
-	@Column(name="City", length=30, nullable=false)
+
+	@NotBlank(message = "City Should not be null")
+	@Column(name = "City", length = 30, nullable = false)
 	private String city;
-	
-	@Column(name="State", length=20, nullable=false)
+
+	@NotBlank(message = "State Should not be null")
+	@Column(name = "State", length = 20, nullable = false)
 	private String state;
-	
-	@Column(name="Zipcode", length=10, nullable=false)
+
+	@NotBlank(message = "Salon zipcode Should not be null")
+	@Pattern(message = "Invalid zipcode", regexp = "^[1-9]{1}[0-9]{2}\\s{0, 1}[0-9]{3}$")
 	private String zipcode;
-	
-	@Column(name="Country", length=30, nullable=false)
+
+	@NotBlank(message = "Country Should not be null")
+	@Column(name = "Country", length = 30, nullable = false)
 	private String country;
 
-	@ManyToOne
-<<<<<<< Updated upstream
-	@JoinColumn(name="userid")
-=======
-	@JoinColumn(name = "userid")
-
-	
-
-	
->>>>>>> Stashed changes
-
-	private User user;
+@ManyToOne
+@JoinColumn(name="userid")
+private User user;
 
 	public Address() {
 		super();
@@ -132,9 +132,5 @@ public class Address {
 		return "Address [addressid=" + addressid + ", houseno=" + houseno + ", street=" + street + ", city=" + city
 				+ ", state=" + state + ", zipcode=" + zipcode + ", country=" + country + "]";
 	}
-	
-	
 
-	
-	
 }

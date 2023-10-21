@@ -31,18 +31,9 @@ public class SalonController {
 		
 	}
 
-
 	@GetMapping("/getSalonByName/name/{name}") // http://localhost:8990/getSalonByName/name/
 	public Salon getSalonByName(@PathVariable("name") String salonname) {
 		return salonService.getSalonByName(salonname);
 	}
-	
-	
-	@GetMapping("/getSalonByName/name/{name}") // http://localhost:8990/getSalonByName/name/
-	public Salon getSalonByName(@PathVariable("name") String salonname) {
-		return salonService.getSalonByName(salonname);
-		
-	}
-	
 
 }
