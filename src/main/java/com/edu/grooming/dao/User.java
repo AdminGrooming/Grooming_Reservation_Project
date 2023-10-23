@@ -28,24 +28,24 @@ public class User {
 	private Integer userid;
 	
 	@NotBlank(message="first name Should not be null")
-	@Column(name="Firstname", length=50, nullable=false)
+	@Column(name="userfirstname", length=50, nullable=false)
 	private String  userfirstname;
 	
-	@Column(name="Lastname",length=50)
+	@Column(name="userlastname",length=50)
 	private String  userlastname;
 	
 	@NotBlank(message="Emailid Should not be null")
 	@Email(message = "Invalid Email", regexp="^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\\.[a-zA-Z.]{2,5}")
-	@Column(unique = true,nullable=false)
+	@Column(name = "useremail", unique = true,nullable=false)
 	private String  useremail;
 	
 	@NotBlank(message="phone Number Should not be empty")
 	@Pattern(message = "Invalid Phone Number", regexp = "^[6-9]\\d{9}$")
-	@Column(unique = true,nullable = false)
+	@Column(name = "userphonenumber", unique = true,nullable = false)
 	private String  userphonenumber;
 	
 	@Pattern(message = "Invalid Password", regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}$")
-	@Column(name="User Password", length=20, nullable=false)
+	@Column(name="userpassword", length=20, nullable=false)
 	private String  userpassword;
 	
 	@JsonIgnore

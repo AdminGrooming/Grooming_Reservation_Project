@@ -26,50 +26,51 @@ public class Salon {
 	private Integer salonid;
 
 	@NotBlank(message="Salon Name Should not be null")
-	@Column(name="Salon Name", length=50, nullable=false)
+	@Column(name="salonname", length=50, nullable=false)
 	private String salonname;
 	
 	@NotBlank(message="Salon Address Should not be null")
-	@Column(name="Salon Address", length=200, nullable=false)
+	@Column(name="salonaddress", length=200, nullable=false)
 	private String salonaddress;
 	
 	@NotBlank(message="Salon City Should not be null")
-	@Column(name="Salon City", length=20, nullable=false)
+	@Column(name="saloncity", length=20, nullable=false)
 	private String saloncity;
 	
 	@NotBlank(message="Salon Pincode Should not be null")
 	@Pattern(message = "Invalid Pincode",regexp = "^[1-9]{1}[0-9]{2}\\s{0, 1}[0-9]{3}$")
-	@Column(name="Pincode",length=8)
+	@Column(name="salonpincode",length=8)
 	private String salonpincode;
 	
 	@NotBlank(message="Salon State Should not be null")
-	@Column(name="Salon State", length=50, nullable=false)
+	@Column(name="salonstate", length=50, nullable=false)
 	private String salonstate;
 	
 	@NotBlank(message="Salon phone Number Should not be null")
 	@Pattern(message = "Invalid Phone Number", regexp = "^[6-9]\\d{9}$")
-	@Column(unique = true,name="Mobile Number",length=10)
+	@Column(unique = true,name="salonphone",length=10)
 	private String salonphone;
 	
 	@NotBlank(message="Salon Email Should not be null")
 	@Email(message = "Invalid Email", regexp="^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\\.[a-zA-Z.]{2,5}")
-	@Column(unique = true,name="Email Id",length=30)
+	@Column(unique = true,name="salonemailid",length=30)
 	private String salonemailid;
 	
 	@NotBlank(message="Salon Opening Time Should not be null")
 	@Pattern(message="Invalid Time",regexp="^(mon|tue|wed|thu|fri)\\-(mon|tue|wed|thu|fri)\\s+\\d{1,2}:\\d{2}-\\d{1,2}:\\d{2}$")
+	@Column(name = "salonopeninghours")
 	private String salonopeninghours;
 	
 	@NotBlank(message="Salon description Should not be null")
-	@Column(name="Salon description", length=500, nullable=false)
+	@Column(name="salondescription", length=500, nullable=false)
 	private String salondescription;
 	
 	@NotBlank(message="Salon Rating Should not be null")
-	@Column(name="Salon rating", length=5, nullable=false)
+	@Column(name="salonrating", length=5, nullable=false)
 	private String salonrating;
 	
 	@Pattern(message = "Invalid Salon Password", regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}$")
-	@Column(name="Salon Password", length=20, nullable=false)
+	@Column(name="salonpassword", nullable=false)
 	private String salonpassword;
 
 	@JsonIgnore
