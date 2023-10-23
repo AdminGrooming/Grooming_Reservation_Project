@@ -4,29 +4,20 @@ package com.edu.grooming.dao;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-
-
-import java.util.Set;
-
-
-import javax.persistence.CascadeType;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-//Comment
 
-import javax.persistence.OneToMany;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
-
-//Comment
 
 
 @Entity
@@ -35,20 +26,27 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer userid;
-
+	
+	@NotBlank(message="first name Should not be null")
+	@Column(name="Firstname", length=50, nullable=false)
 	private String  userfirstname;
+	
+	@Column(name="Lastname",length=50)
 	private String  userlastname;
+	
+	@NotBlank(message="Emailid Should not be null")
+	@Email(message = "Invalid Email", regexp="^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\\.[a-zA-Z.]{2,5}")
+	@Column(unique = true,nullable=false)
 	private String  useremail;
+	
+	@NotBlank(message="phone Number Should not be empty")
+	@Pattern(message = "Invalid Phone Number", regexp = "^[6-9]\\d{9}$")
+	@Column(unique = true,nullable = false)
 	private String  userphonenumber;
+	
+	@Pattern(message = "Invalid Password", regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}$")
+	@Column(name="User Password", length=20, nullable=false)
 	private String  userpassword;
-
-
-//	@JsonIgnore
-//	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-//	private Set<Address> address;
-
-
-
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="user", cascade=CascadeType.ALL)
