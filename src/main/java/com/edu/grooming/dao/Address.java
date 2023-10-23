@@ -21,19 +21,19 @@ public class Address {
 
 	@Pattern(message = "invalid House number", regexp = "^[1-9]\\d*(?:[ -]?(?:[a-zA-Z]+|[1-9]\\d*))?$")
 	@NotBlank(message = "House Number Should not be null")
-	@Column(name = "HouseNumber", nullable = false)
+	@Column(name = "houseno", nullable = false)
 	private String houseno;
 
 	@NotBlank(message = "Street Should not be null")
-	@Column(name = "Street", length = 100, nullable = false)
+	@Column(name = "street", length = 100, nullable = false)
 	private String street;
 
 	@NotBlank(message = "City Should not be null")
-	@Column(name = "City", length = 30, nullable = false)
+	@Column(name = "city", length = 30, nullable = false)
 	private String city;
 
 	@NotBlank(message = "State Should not be null")
-	@Column(name = "State", length = 20, nullable = false)
+	@Column(name = "state", length = 20, nullable = false)
 	private String state;
 
 	@NotBlank(message = "Salon zipcode Should not be null")
@@ -41,12 +41,12 @@ public class Address {
 	private String zipcode;
 
 	@NotBlank(message = "Country Should not be null")
-	@Column(name = "Country", length = 30, nullable = false)
+	@Column(name = "country", length = 30, nullable = false)
 	private String country;
 
-@ManyToOne
-@JoinColumn(name="userid")
-private User user;
+	@ManyToOne
+	@JoinColumn(name="userid")
+	private User user;
 
 	public Address() {
 		super();

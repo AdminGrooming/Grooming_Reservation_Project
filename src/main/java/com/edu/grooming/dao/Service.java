@@ -18,19 +18,16 @@ public class Service {
 	private Integer serviceid;
 
 	@NotBlank(message = "Service Name Should not be null")
-	@Column(name = "Service Name", length = 100, nullable = false)
+	@Column(name = "servicename", length = 100, nullable = false)
 	private String servicename;
 
-	@Column(name = "Service Description", length = 255)
+	@Column(name = "servicedescription", length = 255)
 	private String servicedescription;
 
 	@Min(500)
 	@Max(200000)
-	@Column(nullable = false,name="Service Price")
+	@Column(nullable = false,name="serviceprice")
 	private double serviceprice;
-
-//	@ManyToOne
-//	private Salon salon;
 
 
 	@ManyToOne
