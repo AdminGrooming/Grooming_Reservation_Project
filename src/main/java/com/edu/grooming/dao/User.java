@@ -22,9 +22,29 @@ public class User {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Integer userid;
+<<<<<<< Updated upstream
 	private String  userfirstname;
+=======
+	
+	@NotBlank(message="First name Should not be null")
+	@Pattern(message = "Invalid First Name", regexp = "^[A-Za-z]+$")
+	@Column(name="userfirstname", length=50, nullable=false)
+	private String  userfirstname;
+	
+	
+	@NotBlank(message="Last name Should not be null")
+	@Pattern(message = "Invalid Last Name", regexp = "^[A-Za-z]+$")
+	@Column(name="userlastname",length=50)
+>>>>>>> Stashed changes
 	private String  userlastname;
 	private String  useremail;
+<<<<<<< Updated upstream
+=======
+	
+	@NotBlank(message="Phone Number Should not be empty")
+	@Pattern(message = "Invalid Phone Number", regexp = "^[6-9]\\d{9}$")
+	@Column(name = "userphonenumber", unique = true,nullable = false)
+>>>>>>> Stashed changes
 	private String  userphonenumber;
 	private String  userpassword;
 	
@@ -37,7 +57,6 @@ public class User {
 	
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public User(String userfirstname, String userlastname, String useremail, String userphonenumber,
