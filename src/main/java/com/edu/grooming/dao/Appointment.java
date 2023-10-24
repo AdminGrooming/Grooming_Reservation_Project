@@ -44,6 +44,7 @@ public class Appointment {
 		super();
 	}
 
+
 	public Appointment(@NotNull(message = "Appointment Date should not be empty") Date appointmentDate,
 			@NotNull(message = "Appointment Starttime should not be empty") Time appointmentStartTime,
 			@NotNull(message = "Appointment Endtime should not be empty") Time appointmentEndTime,
@@ -55,10 +56,10 @@ public class Appointment {
 		this.appointmentStatus = appointmentStatus;
 	}
 
+
 	public Integer getAppointmentId() {
 		return appointmentId;
 	}
-
 	public void setAppointmentId(Integer appointmentId) {
 		this.appointmentId = appointmentId;
 	}
@@ -66,7 +67,6 @@ public class Appointment {
 	public Date getAppointmentDate() {
 		return appointmentDate;
 	}
-
 	public void setAppointmentDate(Date appointmentDate) {
 		this.appointmentDate = appointmentDate;
 	}
@@ -74,7 +74,6 @@ public class Appointment {
 	public Time getAppointmentStartTime() {
 		return appointmentStartTime;
 	}
-
 	public void setAppointmentStartTime(Time appointmentStartTime) {
 		this.appointmentStartTime = appointmentStartTime;
 	}
@@ -82,7 +81,6 @@ public class Appointment {
 	public Time getAppointmentEndTime() {
 		return appointmentEndTime;
 	}
-
 	public void setAppointmentEndTime(Time appointmentEndTime) {
 		this.appointmentEndTime = appointmentEndTime;
 	}
@@ -90,10 +88,10 @@ public class Appointment {
 	public String getAppointmentStatus() {
 		return appointmentStatus;
 	}
-
 	public void setAppointmentStatus(String appointmentStatus) {
 		this.appointmentStatus = appointmentStatus;
 	}
+
 
 	@Override
 	public String toString() {

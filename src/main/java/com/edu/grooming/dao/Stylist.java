@@ -111,14 +111,14 @@ public class Stylist {
 		return salon;
 	}
 
-	public void setSalon(Salon salon) {
-		this.salon = salon;
-	}
-
-
-	public void setSalon(Salon salon) {
-		this.salon = salon;
-	}
+//	public void setSalon(Salon salon) {
+//		this.salon = salon;
+//	}
+//
+//
+//	public void setSalon(Salon salon) {
+//		this.salon = salon;
+//	}
 
 	public void updateStylistSalon(Salon salon2) {
 		this.salon = salon2;

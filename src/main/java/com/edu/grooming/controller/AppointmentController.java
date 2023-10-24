@@ -13,15 +13,15 @@ import com.edu.grooming.service.AppointmentService;
 
 @RestController
 public class AppointmentController {
-	
+
 	@Autowired
 	private AppointmentService appointmentService;
-	
+
 	@PostMapping("/saveAppointment")
 	public Appointment saveAppointment(@RequestBody Appointment appointment) {
 		return appointmentService.saveAppointment(appointment);
 	}
-	
+
 	@GetMapping("/getAllAppointments")
 	public List<Appointment> getAllAppointments() {
 		return appointmentService.getAllAppointments();

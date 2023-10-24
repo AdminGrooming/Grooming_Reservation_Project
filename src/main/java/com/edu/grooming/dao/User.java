@@ -5,16 +5,17 @@ import java.util.Set;
 
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
-
-//Comment
 
 @Entity
 public class User {
@@ -22,9 +23,6 @@ public class User {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Integer userid;
-<<<<<<< Updated upstream
-	private String  userfirstname;
-=======
 	
 	@NotBlank(message="First name Should not be null")
 	@Pattern(message = "Invalid First Name", regexp = "^[A-Za-z]+$")
@@ -35,16 +33,13 @@ public class User {
 	@NotBlank(message="Last name Should not be null")
 	@Pattern(message = "Invalid Last Name", regexp = "^[A-Za-z]+$")
 	@Column(name="userlastname",length=50)
->>>>>>> Stashed changes
 	private String  userlastname;
 	private String  useremail;
-<<<<<<< Updated upstream
-=======
+
 	
 	@NotBlank(message="Phone Number Should not be empty")
 	@Pattern(message = "Invalid Phone Number", regexp = "^[6-9]\\d{9}$")
 	@Column(name = "userphonenumber", unique = true,nullable = false)
->>>>>>> Stashed changes
 	private String  userphonenumber;
 	private String  userpassword;
 	
@@ -125,7 +120,6 @@ public class User {
 		this.address = address;
 	}
 	
-
 
 	@Override
 	public String toString() {
