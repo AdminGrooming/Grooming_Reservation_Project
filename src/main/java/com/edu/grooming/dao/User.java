@@ -27,10 +27,15 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer userid;
 	
-	@NotBlank(message="first name Should not be null")
+
+	@NotBlank(message="First name Should not be null")
+	@Pattern(message = "Invalid First Name", regexp = "^[A-Za-z]+$")
 	@Column(name="userfirstname", length=50, nullable=false)
 	private String  userfirstname;
 	
+	
+	@NotBlank(message="Last name Should not be null")
+	@Pattern(message = "Invalid Last Name", regexp = "^[A-Za-z]+$")
 	@Column(name="userlastname",length=50)
 	private String  userlastname;
 	
@@ -38,6 +43,7 @@ public class User {
 	@Email(message = "Invalid Email", regexp="^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\\.[a-zA-Z.]{2,5}")
 	@Column(name = "useremail", unique = true,nullable=false)
 	private String  useremail;
+
 	
 	@NotBlank(message="phone Number Should not be empty")
 	@Pattern(message = "Invalid Phone Number", regexp = "^[6-9]\\d{9}$")
@@ -56,7 +62,6 @@ public class User {
 
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public User(String userfirstname, String userlastname, String useremail, String userphonenumber,
@@ -124,7 +129,6 @@ public class User {
 	public void setAddress(Set<Address> address) {
 		this.address = address;
 	}
-
 
 	@Override
 	public String toString() {
