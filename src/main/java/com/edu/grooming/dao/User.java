@@ -1,6 +1,7 @@
 package com.edu.grooming.dao;
 
 
+
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -58,6 +59,9 @@ public class User {
 	@OneToMany(mappedBy="user", cascade=CascadeType.ALL)
 	private Set<Address> address;
 
+	@JsonIgnore
+	@OneToMany(mappedBy="user", cascade=CascadeType.ALL)
+	private Set<Appointment> appointment;
 	
 
 	public User() {
