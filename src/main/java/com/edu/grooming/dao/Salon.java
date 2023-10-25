@@ -3,51 +3,86 @@ package com.edu.grooming.dao;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+
+import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import ch.qos.logback.core.subst.Token.Type;
-
-import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
-
 
 @Entity
 public class Salon {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer salonid;
+
+	@NotBlank(message="Salon Name Should not be null")
+	@Column(name="salonname", length=50, nullable=false)
+	private String salonname;
 	
-	private String  salonname;
-	private String  salonaddress;
-	private String  saloncity;
-	private String  salonpincode;
-	private String  salonstate;
-	private String  salonphone;
-	private String  salonemailid;
-	private String  salonopeninghours;
-	private String  salondescription;
-	private String  salonrating;
-	private String  salonpassword;
+	@NotBlank(message="Salon Address Should not be null")
+	@Column(name="salonaddress", length=200, nullable=false)
+	private String salonaddress;
 	
+	@NotBlank(message="Salon City Should not be null")
+	@Column(name="saloncity", length=20, nullable=false)
+	private String saloncity;
+	
+	@NotBlank(message="Salon Pincode Should not be null")
+	@Pattern(message = "Invalid Pincode",regexp = "^[1-9]{1}[0-9]{2}\\s{0, 1}[0-9]{3}$")
+	@Column(name="salonpincode",length=8)
+	private String salonpincode;
+	
+	@NotBlank(message="Salon State Should not be null")
+	@Column(name="salonstate", length=50, nullable=false)
+	private String salonstate;
+	
+	@NotBlank(message="Salon phone Number Should not be null")
+	@Pattern(message = "Invalid Phone Number", regexp = "^[6-9]\\d{9}$")
+	@Column(unique = true,name="salonphone",length=10)
+	private String salonphone;
+	
+	@NotBlank(message="Salon Email Should not be null")
+	@Email(message = "Invalid Email", regexp="^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\\.[a-zA-Z.]{2,5}")
+	@Column(unique = true,name="salonemailid",length=30)
+	private String salonemailid;
+	
+	@NotBlank(message="Salon Opening Time Should not be null")
+	@Pattern(message="Invalid Time",regexp="^(mon|tue|wed|thu|fri)\\-(mon|tue|wed|thu|fri)\\s+\\d{1,2}:\\d{2}-\\d{1,2}:\\d{2}$")
+	@Column(name = "salonopeninghours")
+	private String salonopeninghours;
+	
+	@NotBlank(message="Salon description Should not be null")
+	@Column(name="salondescription", length=500, nullable=false)
+	private String salondescription;
+	
+	@NotBlank(message="Salon Rating Should not be null")
+	@Column(name="salonrating", length=5, nullable=false)
+	private String salonrating;
+	
+	@Pattern(message = "Invalid Salon Password", regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}$")
+	@Column(name="salonpassword", nullable=false)
+	private String salonpassword;
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "salon", cascade = CascadeType.ALL)
 	private List<Stylist> stylist;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "salon", cascade = CascadeType.ALL)
 	private List<Service> service;
-	
-	public Salon() {
+
+
+public Salon() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -173,9 +208,6 @@ public class Salon {
 				+ salonopeninghours + ", salondescription=" + salondescription + ", salonrating=" + salonrating
 				+ ", salonpassword=" + salonpassword + "]";
 	}
-	
-	
-	
-	
+
 
 }
