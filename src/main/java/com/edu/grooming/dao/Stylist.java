@@ -136,6 +136,7 @@ public class Stylist {
 		return salon;
 	}
 
+
 	public void setSalon(Salon salon) {
 		this.salon = salon;
 	}

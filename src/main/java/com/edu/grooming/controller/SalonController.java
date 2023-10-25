@@ -24,7 +24,6 @@ public class SalonController {
 		
 	}
 
-
 	@GetMapping("/getSalon")  // http://localhost:8990/getSalon
 	public List<Salon> getSalon(){
 		return salonService.getSalon();
