@@ -1,13 +1,16 @@
 package com.edu.grooming.dao;
 
-import java.sql.Date;
-import java.sql.Time;
-
 import javax.persistence.Column;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -17,43 +20,63 @@ public class Appointment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer appointmentId;
-//	private Integer userId;
-//	private Integer stylistId;
-//	private Integer serviceId;
+
 	@NotNull(message = "Appointment Date should not be empty")
 	@FutureOrPresent
 	@Column(name = "appointmentDate", nullable = false)
-	private Date appointmentDate;
+	private LocalDate appointmentDate;
 
 	@NotNull(message = "Appointment Starttime should not be empty")
 	@FutureOrPresent
 	@Column(name = "appointmentStartTime", nullable = false)
-	private Time appointmentStartTime;
+	private LocalTime appointmentStartTime;
 
 	@NotNull(message = "Appointment Endtime should not be empty")
 	@FutureOrPresent
 	@Column(name = "appointmentEndTime", nullable = false)
-	private Time appointmentEndTime;
+	private LocalTime appointmentEndTime;
 
 	@NotBlank(message = "Appointment Status Should not be empty")
 	@Column(name = "appointmentStatus", nullable = false)
 	private String appointmentStatus;
-//	private String appointmentLocation;
+	
+	@NotBlank(message = "Appointment Type Should not be empty")
+	@Column(name = "appointmentType" , nullable = false)
+    private String appointmentType;
+	
+	@ManyToOne
+	@JoinColumn(name = "userid")
+	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name = "salonid")
+	private Salon salon;
+	
+	@ManyToOne
+	@JoinColumn(name = "stylistid")
+	private Stylist stylist;
+	
+	@ManyToOne
+	@JoinColumn(name = "serviceid")
+	private Service service;
 
 	public Appointment() {
 		super();
 	}
 
 
-	public Appointment(@NotNull(message = "Appointment Date should not be empty") Date appointmentDate,
-			@NotNull(message = "Appointment Starttime should not be empty") Time appointmentStartTime,
-			@NotNull(message = "Appointment Endtime should not be empty") Time appointmentEndTime,
-			@NotBlank(message = "Appointment Status Should not be empty") String appointmentStatus) {
+	public Appointment(
+			@NotNull(message = "Appointment Date should not be empty") @FutureOrPresent LocalDate appointmentDate,
+			@NotNull(message = "Appointment Starttime should not be empty") @FutureOrPresent LocalTime appointmentStartTime,
+			@NotNull(message = "Appointment Endtime should not be empty") @FutureOrPresent LocalTime appointmentEndTime,
+			@NotBlank(message = "Appointment Status Should not be empty") String appointmentStatus,
+			@NotBlank(message = "Appointment Type Should not be empty") String appointmentType) {
 		super();
 		this.appointmentDate = appointmentDate;
 		this.appointmentStartTime = appointmentStartTime;
 		this.appointmentEndTime = appointmentEndTime;
 		this.appointmentStatus = appointmentStatus;
+		this.appointmentType = appointmentType;
 	}
 
 
@@ -64,24 +87,24 @@ public class Appointment {
 		this.appointmentId = appointmentId;
 	}
 
-	public Date getAppointmentDate() {
+	public LocalDate getAppointmentDate() {
 		return appointmentDate;
 	}
-	public void setAppointmentDate(Date appointmentDate) {
+	public void setAppointmentDate(LocalDate appointmentDate) {
 		this.appointmentDate = appointmentDate;
 	}
 
-	public Time getAppointmentStartTime() {
+	public LocalTime getAppointmentStartTime() {
 		return appointmentStartTime;
 	}
-	public void setAppointmentStartTime(Time appointmentStartTime) {
+	public void setAppointmentStartTime(LocalTime appointmentStartTime) {
 		this.appointmentStartTime = appointmentStartTime;
 	}
 
-	public Time getAppointmentEndTime() {
+	public LocalTime getAppointmentEndTime() {
 		return appointmentEndTime;
 	}
-	public void setAppointmentEndTime(Time appointmentEndTime) {
+	public void setAppointmentEndTime(LocalTime appointmentEndTime) {
 		this.appointmentEndTime = appointmentEndTime;
 	}
 
@@ -91,12 +114,23 @@ public class Appointment {
 	public void setAppointmentStatus(String appointmentStatus) {
 		this.appointmentStatus = appointmentStatus;
 	}
+	
+	
+	public String getAppointmentType() {
+		return appointmentType;
+	}
+	public void setAppointmentType(String appointmentType) {
+		this.appointmentType = appointmentType;
+	}
 
 
 	@Override
 	public String toString() {
 		return "Appointment [appointmentId=" + appointmentId + ", appointmentDate=" + appointmentDate
 				+ ", appointmentStartTime=" + appointmentStartTime + ", appointmentEndTime=" + appointmentEndTime
-				+ ", appointmentStatus=" + appointmentStatus + "]";
+				+ ", appointmentStatus=" + appointmentStatus + ", appointmentType=" + appointmentType + "]";
 	}
+
+
+	
 }

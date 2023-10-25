@@ -80,6 +80,10 @@ public class Salon {
 	@JsonIgnore
 	@OneToMany(mappedBy = "salon", cascade = CascadeType.ALL)
 	private List<Service> service;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "salon", cascade = CascadeType.ALL)
+	private List<Appointment> appointment;
 
 
 public Salon() {
