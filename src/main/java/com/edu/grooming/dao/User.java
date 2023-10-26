@@ -51,7 +51,7 @@ public class User {
 	@Column(name = "userphonenumber", unique = true,nullable = false)
 	private String  userphonenumber;
 	
-	@Pattern(message = "Invalid Password", regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}$")
+	@Pattern(message = "Invalid Password", regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8,20}$")
 	@Column(name="userpassword", length=20, nullable=false)
 	private String  userpassword;
 	
