@@ -27,12 +27,10 @@ public class Appointment {
 	private LocalDate appointmentDate;
 
 	@NotNull(message = "Appointment Starttime should not be empty")
-	@FutureOrPresent
 	@Column(name = "appointmentStartTime", nullable = false)
 	private LocalTime appointmentStartTime;
 
 	@NotNull(message = "Appointment Endtime should not be empty")
-	@FutureOrPresent
 	@Column(name = "appointmentEndTime", nullable = false)
 	private LocalTime appointmentEndTime;
 
@@ -122,6 +120,45 @@ public class Appointment {
 	public void setAppointmentType(String appointmentType) {
 		this.appointmentType = appointmentType;
 	}
+	
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
+	public Salon getSalon() {
+		return salon;
+	}
+
+
+	public void setSalon(Salon salon) {
+		this.salon = salon;
+	}
+
+
+	public Stylist getStylist() {
+		return stylist;
+	}
+
+
+	public void setStylist(Stylist stylist) {
+		this.stylist = stylist;
+	}
+
+
+	public Service getService() {
+		return service;
+	}
+
+
+	public void setService(Service service) {
+		this.service = service;
+	}
 
 
 	@Override
@@ -129,6 +166,31 @@ public class Appointment {
 		return "Appointment [appointmentId=" + appointmentId + ", appointmentDate=" + appointmentDate
 				+ ", appointmentStartTime=" + appointmentStartTime + ", appointmentEndTime=" + appointmentEndTime
 				+ ", appointmentStatus=" + appointmentStatus + ", appointmentType=" + appointmentType + "]";
+	}
+
+
+	public void updateAppointmentUser(User user2) {
+	
+		this.user = user2;
+	}
+
+
+	public void updateAppointmentSalon(Salon salon2) {
+		
+		this.salon = salon2;
+		
+	}
+
+
+	public void updateAppointmentStylist(Stylist stylist2) {
+		this.stylist = stylist2;
+		
+	}
+
+
+	public void updateAppointmentStylist(Service service2) {
+		this.service = service2;
+		
 	}
 
 
