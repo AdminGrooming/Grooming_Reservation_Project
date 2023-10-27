@@ -28,28 +28,24 @@ public class AppointmentController {
 	public List<Appointment> getAllAppointments() {
 		return appointmentService.getAllAppointments();
 	}
-	
+
 	@PutMapping("/updateAppointmentUser/{userid}/{appointmentid}")
 	public Appointment updateAppointmentUser(@PathVariable("userid") Integer userid,@PathVariable("appointmentid") Integer appointmentId) {
 		return appointmentService.updateAppointmentUser(userid,appointmentId);
-		
 	}
-	
+
 	@PutMapping("/updateAppointmentSalon/{salonid}/{appointmentid}")
 	public Appointment updateAppointmentSalon(@PathVariable("salonid") Integer salonid,@PathVariable("appointmentid") Integer appointmentId) {
 		return appointmentService.updateAppointmentSalon(salonid,appointmentId);
-		
 	}
-	
+
 	@PutMapping("/updateAppointmentStylist/{stylistid}/{appointmentid}")
 	public Appointment updateAppointmentStylist(@PathVariable("stylistid") Integer stylistid,@PathVariable("appointmentid") Integer appointmentId) {
 		return appointmentService.updateAppointmentStylist(stylistid,appointmentId);
-		
 	}
-	
+
 	@PutMapping("/updateAppointmentService/{serviceid}/{appointmentid}")
 	public Appointment updateAppointmentService(@PathVariable("serviceid") Integer serviceid,@PathVariable("appointmentid") Integer appointmentId) {
 		return appointmentService.updateAppointmentService(serviceid,appointmentId);
 	}
-	
 }
