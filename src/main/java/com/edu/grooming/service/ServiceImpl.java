@@ -1,6 +1,8 @@
 package com.edu.grooming.service;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.edu.grooming.dao.Salon;
@@ -31,6 +33,13 @@ public class ServiceImpl implements ServiceService{
 		
 		service.updateServiceSalon(salon);
 		return serviceRepository.save(service);
+	}
+
+
+	@Override
+	public List<Service> getAllService() {
+		// TODO Auto-generated method stub
+		return serviceRepository.findAll();
 	}
 
 }
