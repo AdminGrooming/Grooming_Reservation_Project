@@ -1,6 +1,9 @@
 package com.edu.grooming.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,5 +22,9 @@ public class AddressController {
 		return addressService.addAddress(address);
 	}
 
+	@GetMapping("/getAllAddress") //http://localhost:8990/getAllAddress
+	public List<Address> getAllAddress(){
+		return addressService.getAllAddress();
+	}
 
 }
