@@ -26,7 +26,7 @@ public class Admin {
 	private String adminEmail;
 	
 	@NotBlank(message = "Admin Password should not be empty")
-	@Pattern(message = "Invalid Admin Password", regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}$")
+	@Pattern(message = "Invalid Admin Password", regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8,20}$")
 	@Column(name="adminPassword", nullable=false, length=20)
 	private String adminPassword;
 
