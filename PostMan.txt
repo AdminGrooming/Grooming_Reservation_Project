@@ -44,6 +44,15 @@
     "stylistspecialization" : "fire cutting",
     "stylistrating" : "10"
 }
+********* Add Appointment *********
+{
+    "appointmentDate": "2023-10-28",
+    "appointmentStartTime": "22:00:00",
+    "appointmentEndTime": "23:00:00",
+    "appointmentStatus": "pending",
+    "appointmentType": "walking"
+}
+
 
 ********* Add service *********
 {
