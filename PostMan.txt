@@ -1,11 +1,11 @@
 ********* Add User *********
 {
-    "userid": 1,
+     "userid": 1,
     "userfirstname": "Akash",
     "userlastname": "Hedau",
     "useremail": "akash@gmail.com",
     "userphonenumber": "8308985621",
-    "userpassword": "1234"
+    "userpassword": "Akash@8308"
 }
 
 ********* Add Address *********
@@ -45,7 +45,7 @@
     "stylistrating" : "10"
 }
 
-********* Add Address *********
+********* Add service *********
 {
     "servicename" : "makeup",
     "servicdesc" : "full free makeup",

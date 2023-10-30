@@ -38,7 +38,7 @@ public class Salon {
 	private String saloncity;
 	
 	@NotBlank(message="Salon Pincode Should not be null")
-	@Pattern(message = "Invalid Pincode",regexp = "^[1-9]{1}[0-9]{2}\\s{0, 1}[0-9]{3}$")
+	@Pattern(message = "Invalid Pincode",regexp = "^[1-9]{1}[0-9]{2}\\s{0,1}[0-9]{3}$")
 	@Column(name="salonpincode",length=8)
 	private String salonpincode;
 	
@@ -69,7 +69,7 @@ public class Salon {
 	@Column(name="salonrating", length=5, nullable=false)
 	private String salonrating;
 	
-	@Pattern(message = "Invalid Salon Password", regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}$")
+	@Pattern(message = "Invalid Salon Password", regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8,20}$")
 	@Column(name="salonpassword", nullable=false)
 	private String salonpassword;
 

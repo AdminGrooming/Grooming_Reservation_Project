@@ -37,7 +37,7 @@ public class Address {
 	private String state;
 
 	@NotBlank(message = "Salon zipcode Should not be null")
-	@Pattern(message = "Invalid zipcode", regexp = "^[1-9]{1}[0-9]{2}\\s{0, 1}[0-9]{3}$")
+	@Pattern(message = "Invalid zipcode", regexp = "^[1-9]{1}[0-9]{2}\\s{0,1}[0-9]{3}$")
 	private String zipcode;
 
 	@NotBlank(message = "Country Should not be null")

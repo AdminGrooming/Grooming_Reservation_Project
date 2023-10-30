@@ -20,8 +20,7 @@ public class ServiceController {
 	private ServiceService serviceService;
 	
 	@PostMapping("/saveService")	//http://localhost:8990/saveService
-	public Service saveService(@RequestBody Service service)
-	{
+	public Service saveService(@RequestBody Service service){
 		return serviceService.saveService(service);
 	}
 
