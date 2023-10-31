@@ -8,4 +8,7 @@ import com.edu.grooming.dao.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 
+
+	User findByUseremailOrUserphonenumber(String useremail, String userphonenumber);
+
 }

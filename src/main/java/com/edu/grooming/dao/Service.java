@@ -15,6 +15,8 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Service {
 	@Id
@@ -38,6 +40,7 @@ public class Service {
 	@JoinColumn(name = "salonid")
 	private Salon salon;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "service",cascade = CascadeType.ALL)
 	private List<Appointment> appointment;
 

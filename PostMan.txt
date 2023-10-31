@@ -18,7 +18,7 @@
     "country": "India"
 }
 
-********* Add Address *********
+********* Add Salon *********
 
 {
     "salonname" : "Vaishnavi's salon",
@@ -28,13 +28,13 @@
     "salonstate": "maha",
     "salonphone": "8308985621",
     "salonemailid": "salon1@gmail.com",
-    "salonopeninghours": "2001-01-01",
+    "salonopeninghours": "mon-fri 9:00-5:00",
     "salondescription": "testing salon",
     "salonrating": "5",
-    "salonpassword": "salon123"
+    "salonpassword": "Salon@123"
 }
 
-********* Add Address *********
+********* Add Stylist *********
 
 {
     "firstname" : "Akash",
@@ -42,7 +42,7 @@
     "stylistphonenum" : "8308985621",
     "stylistemail" : "akash@gmail.com",
     "stylistspecialization" : "fire cutting",
-    "stylistrating" : "10"
+    "stylistrating" : "4"
 }
 ********* Add Appointment *********
 {
