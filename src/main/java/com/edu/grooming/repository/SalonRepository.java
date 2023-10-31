@@ -12,6 +12,8 @@ public interface SalonRepository extends JpaRepository<Salon, Integer> {
 	@Query(value = "select * from salon where salonname=?",nativeQuery = true)
 	Salon findbySalonname(String salonname);
 
+	Salon findBySalonemailidOrSalonphone(String salonemailid, String salonphone);
+
 	
 
 }

@@ -8,4 +8,6 @@ import com.edu.grooming.dao.Stylist;
 @Repository
 public interface StylistRepository extends JpaRepository<Stylist, Integer> {
 
+	Stylist findByStylistemailOrStylistphonenum(String stylistemail, String stylistphonenum);
+
 }
