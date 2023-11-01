@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.edu.grooming.dao.Stylist;
-import com.edu.grooming.error.GlobalException;
+import com.edu.grooming.error.BadRequestException;
 import com.edu.grooming.repository.StylistRepository;
 import com.edu.grooming.service.StylistService;
 
@@ -29,11 +29,11 @@ public class StylistController {
 	private StylistRepository stylistRepository;
 	
 	@PostMapping("/addStylist") //http://localhost:8990/addStylist
-	public ResponseEntity<Stylist> addStylist(@Valid @RequestBody Stylist stylist) throws GlobalException {
+	public ResponseEntity<Stylist> addStylist(@Valid @RequestBody Stylist stylist) throws BadRequestException {
 		Stylist stylist1 = stylistRepository.findByStylistemailOrStylistphonenum(stylist.getStylistemail(),stylist.getStylistphonenum());
 		if(stylist1 != null) {
 			System.out.println("Email and phonenumber already exist!");
-			throw new GlobalException("Stylist already exist!");
+			throw new BadRequestException("Stylist already exist!");
 		}
 		
 		Stylist stylist2 = stylistService.addStylist(stylist);

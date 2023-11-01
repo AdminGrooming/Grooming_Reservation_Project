@@ -1,13 +1,13 @@
 package com.edu.grooming.error;
 
-public class GlobalException extends Exception{
+public class BadRequestException extends Exception{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public GlobalException(String s) {
+	public BadRequestException(String s) {
 		super(s);
 	}
 
