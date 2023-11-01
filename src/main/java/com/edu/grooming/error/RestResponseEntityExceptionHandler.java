@@ -14,10 +14,16 @@ import com.edu.grooming.dao.ErrorMessage;
 @ResponseStatus
 public class RestResponseEntityExceptionHandler {
 	
-	@ExceptionHandler(GlobalException.class)
-	public ResponseEntity<ErrorMessage> alreadyExistException(GlobalException exception,WebRequest request) {
+	@ExceptionHandler(BadRequestException.class)
+	public ResponseEntity<ErrorMessage> alreadyExistException(BadRequestException exception,WebRequest request) {
 		ErrorMessage message = new ErrorMessage(HttpStatus.BAD_REQUEST,exception.getMessage());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
+	}
+	
+	@ExceptionHandler(NotFoundException.class)
+	public ResponseEntity<ErrorMessage> notFoundException(NotFoundException exception,WebRequest request) {
+		ErrorMessage message = new ErrorMessage(HttpStatus.NOT_FOUND,exception.getMessage());
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
 	}
 	
 
