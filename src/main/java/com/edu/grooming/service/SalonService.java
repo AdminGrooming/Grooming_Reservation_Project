@@ -2,6 +2,7 @@ package com.edu.grooming.service;
 
 import java.util.List;
 
+
 import com.edu.grooming.dao.Salon;
 import com.edu.grooming.error.NotFoundException;
 
@@ -17,6 +18,9 @@ public interface SalonService  {
 
 	Salon updateSalonById(Integer salonid,Salon salon) throws NotFoundException;
 
+	Salon saveServiceBySalonId(com.edu.grooming.dao.Service service, Integer salonid) throws NotFoundException;
+
+	
 	
 
 }
