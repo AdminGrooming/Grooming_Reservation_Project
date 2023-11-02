@@ -32,18 +32,16 @@ public class Service {
 
 	@Min(500)
 	@Max(200000)
-	@Column(nullable = false,name="serviceprice")
+	@Column(nullable = false, name = "serviceprice")
 	private double serviceprice;
-
 
 	@ManyToOne
 	@JoinColumn(name = "salonid")
 	private Salon salon;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "service",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "service", cascade = CascadeType.ALL)
 	private List<Appointment> appointment;
-
 
 	public Service() {
 		super();
@@ -95,8 +93,6 @@ public class Service {
 				+ ", serviceprice=" + serviceprice + "]";
 	}
 
-
-
 	public Salon getSalon() {
 		return salon;
 	}
@@ -105,12 +101,14 @@ public class Service {
 		this.salon = salon;
 	}
 
-
 	public void updateServiceSalon(Salon salon2) {
 		this.salon = salon2;
 	}
-	
 
+	public void serviceAssignSalon(Salon salon2) {
+		// TODO Auto-generated method stub
+		this.salon = salon2;
 
-	
+	}
+
 }

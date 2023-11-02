@@ -203,6 +203,31 @@ public Salon() {
 	public void setSalonpassword(String salonpassword) {
 		this.salonpassword = salonpassword;
 	}
+	
+
+	public List<Stylist> getStylist() {
+		return stylist;
+	}
+
+	public void setStylist(List<Stylist> stylist) {
+		this.stylist = stylist;
+	}
+
+	public List<Service> getService() {
+		return service;
+	}
+
+	public void setService(List<Service> service) {
+		this.service = service;
+	}
+
+	public List<Appointment> getAppointment() {
+		return appointment;
+	}
+
+	public void setAppointment(List<Appointment> appointment) {
+		this.appointment = appointment;
+	}
 
 	@Override
 	public String toString() {
