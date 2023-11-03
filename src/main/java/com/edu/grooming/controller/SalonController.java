@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.edu.grooming.dao.Salon;
+import com.edu.grooming.dao.Services;
 import com.edu.grooming.error.BadRequestException;
 import com.edu.grooming.error.NotFoundException;
 import com.edu.grooming.repository.SalonRepository;
@@ -66,10 +67,10 @@ public class SalonController {
 		
 	}
 	
-	@PostMapping("/saveServiceBySalonId/{id}") 	 //http://localhost:8990/saveServiceBySalonId/{id}
-	public Salon saveServiceBySalonId(@Valid @RequestBody com.edu.grooming.dao.Service service, @PathVariable("id") Integer salonid) throws NotFoundException
+	@PostMapping("/saveServicesBySalonId/{id}") 	 //http://localhost:8990/saveServicesBySalonId/{id}
+	public Salon saveServicesBySalonId(@Valid @RequestBody Services services, @PathVariable("id") Integer salonid) throws NotFoundException
 	{
-		return salonService.saveServiceBySalonId(service,salonid);
+		return salonService.saveServicesBySalonId(services,salonid);
 //		return salonRepository.findById(salonid).get();
 	}
 	

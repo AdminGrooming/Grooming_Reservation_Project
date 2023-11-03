@@ -7,11 +7,12 @@ import org.springframework.stereotype.Service;
 
 import com.edu.grooming.dao.Appointment;
 import com.edu.grooming.dao.Salon;
+import com.edu.grooming.dao.Services;
 import com.edu.grooming.dao.Stylist;
 import com.edu.grooming.dao.User;
 import com.edu.grooming.repository.AppointmentRepository;
 import com.edu.grooming.repository.SalonRepository;
-import com.edu.grooming.repository.ServiceRepository;
+import com.edu.grooming.repository.ServicesRepository;
 import com.edu.grooming.repository.StylistRepository;
 import com.edu.grooming.repository.UserRepository;
 
@@ -31,7 +32,7 @@ public class AppointmentServiceImpl implements AppointmentService{
 	private StylistRepository stylistRepository;
 	
 	@Autowired
-	private ServiceRepository serviceRepository;
+	private ServicesRepository servicesRepository;
 
 	@Override
 	public Appointment saveAppointment(Appointment appointment) {
@@ -73,9 +74,9 @@ public class AppointmentServiceImpl implements AppointmentService{
 
 	@Override
 	public Appointment updateAppointmentService(Integer serviceid, Integer appointmentId) {
-		com.edu.grooming.dao.Service service = serviceRepository.findById(serviceid).get();
+		Services services = servicesRepository.findById(serviceid).get();
 		Appointment appointment =  appointmentRepository.findById(appointmentId).get();
-		appointment.updateAppointmentStylist(service);
+		appointment.updateAppointmentStylist(services);
 		return appointmentRepository.save(appointment);
 	}
 

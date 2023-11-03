@@ -56,7 +56,7 @@
 
 ********* Add service *********
 {
-    "servicename" : "makeup",
+    "servicesname" : "makeup",
     "servicdesc" : "full free makeup",
-    "serviceprice" : "10000"
+    "servicesprice" : "10000"
 }
