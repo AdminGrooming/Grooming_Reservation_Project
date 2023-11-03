@@ -79,7 +79,7 @@ public class Salon {
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "salon", cascade = CascadeType.ALL)
-	private List<Service> service;
+	private List<Services> services;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "salon", cascade = CascadeType.ALL)
@@ -213,12 +213,12 @@ public Salon() {
 		this.stylist = stylist;
 	}
 
-	public List<Service> getService() {
-		return service;
+	public List<Services> getServices() {
+		return services;
 	}
 
-	public void setService(List<Service> service) {
-		this.service = service;
+	public void setServices(List<Services> services) {
+		this.services = services;
 	}
 
 	public List<Appointment> getAppointment() {

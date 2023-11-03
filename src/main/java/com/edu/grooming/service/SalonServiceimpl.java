@@ -8,10 +8,13 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.edu.grooming.dao.Salon;
+import com.edu.grooming.dao.Services;
 import com.edu.grooming.error.NotFoundException;
 import com.edu.grooming.repository.SalonRepository;
-import com.edu.grooming.repository.ServiceRepository;
+import com.edu.grooming.repository.ServicesRepository;
+
 
 @Service
 public class SalonServiceimpl implements SalonService {
@@ -20,7 +23,7 @@ public class SalonServiceimpl implements SalonService {
 	private SalonRepository salonRepository;
 
 	@Autowired
-	private ServiceRepository serviceRepository;
+	private ServicesRepository servicesRepository;
 
 	@Override
 	public Salon saveSalon(Salon salon) {
@@ -94,7 +97,7 @@ public class SalonServiceimpl implements SalonService {
 	}
 
 	@Override
-	public Salon saveServiceBySalonId(@Valid com.edu.grooming.dao.Service service, Integer salonid)
+	public Salon saveServicesBySalonId(@Valid Services services, Integer salonid)
 			throws NotFoundException {
 		// TODO Auto-generated method stub
 		Optional<Salon> salon = salonRepository.findById(salonid);
@@ -103,16 +106,34 @@ public class SalonServiceimpl implements SalonService {
 			throw new NotFoundException("Saloon is not Present");
 		} else {
 			Salon salon1 = salonRepository.findById(salonid).get();
-			List<com.edu.grooming.dao.Service> services = salon1.getService();
-			if (services.isEmpty()) {
-				List<com.edu.grooming.dao.Service> services2 = new ArrayList<>();
-				services2.add(serviceRepository.save(service));
-				int id = service.getServiceid();
-				com.edu.grooming.dao.Service service3 = serviceRepository.findById(id).get();
+			List<Services> services1 = salon1.getServices();
+			if (services1.isEmpty()) {
+				List<Services> services2 = new ArrayList<>();
+				services2.add(servicesRepository.save(services));
+				int id = services.getservicesid();
+				Services services3 = servicesRepository.findById(id).get();
 				Salon salon2 = salonRepository.findById(salonid).get();
-				service3.serviceAssignSalon(salon2);
+				services3.servicesAssignSalon(salon2);
+				servicesRepository.save(services3);
+				return salon1;
+			}
+			else {
+				services1.add(servicesRepository.save(services));
+				System.out.println(services);
+				
+				int id=services.getservicesid();
+				
+				Services servicess4=servicesRepository.findById(id).get();
+				Salon salon3=salonRepository.findById(salonid).get();
+				servicess4.servicesAssignSalon(salon3);
+				
+				servicesRepository.save(servicess4);
+				return salon1;
+				
+				
+				
 			}
 		}
-		return null;
+		
 	}
 }
