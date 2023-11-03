@@ -60,3 +60,10 @@
     "servicdesc" : "full free makeup",
     "servicesprice" : "10000"
 }
+
+******admin*******
+{
+"adminName":"admin",
+"adminEmail":"groomingreservation@gmail.com",
+"adminPassword":"Admin@123"
+}
