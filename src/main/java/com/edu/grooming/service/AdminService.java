@@ -15,4 +15,6 @@ public interface AdminService {
 
 	Admin updateAdminById(Integer adminid, @Valid Admin admin) throws NotFoundException;
 
+	void deleteAdminById(Integer adminid) throws NotFoundException;
+
 }

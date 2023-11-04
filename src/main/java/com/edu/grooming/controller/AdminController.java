@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,4 +37,11 @@ public class AdminController {
 	public Admin updateAdminById(@PathVariable("adminid") Integer adminid,@Valid @RequestBody Admin admin) throws NotFoundException {
 		return adminService.updateAdminById(adminid,admin);
 	}
+	
+	@DeleteMapping("/deleteAdminById/{adminid}") // http://localhost:8990/deleteAdminById/{adminid}
+	public String deleteAdminById(@PathVariable("adminid") Integer adminid ) throws NotFoundException {
+		adminService.deleteAdminById(adminid);
+		return "Record Deleted";
+	}
+	
 }
