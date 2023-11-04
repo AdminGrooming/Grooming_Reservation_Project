@@ -45,5 +45,14 @@ public class AdminServiceImpl implements AdminService{
 		}
 		
 	}
+
+	@Override
+	public void deleteAdminById(Integer adminid) throws NotFoundException {
+		Optional<Admin> admin=adminRepository.findById(adminid);
+		if(!admin.isPresent()){
+			throw new NotFoundException("Admin id="+adminid+"not found");
+		}
+		adminRepository.deleteById(adminid);
+	}
 	
 }
