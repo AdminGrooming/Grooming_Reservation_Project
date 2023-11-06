@@ -38,7 +38,7 @@ public class Salon {
 	private String saloncity;
 	
 	@NotBlank(message="Salon Pincode Should not be null")
-	@Pattern(message = "Invalid Pincode",regexp = "^[1-9]{1}[0-9]{2}\\s{0, 1}[0-9]{3}$")
+	@Pattern(message = "Invalid Pincode",regexp = "^[1-9]{1}[0-9]{2}\\s{0,1}[0-9]{3}$")
 	@Column(name="salonpincode",length=8)
 	private String salonpincode;
 	
@@ -69,7 +69,7 @@ public class Salon {
 	@Column(name="salonrating", length=5, nullable=false)
 	private String salonrating;
 	
-	@Pattern(message = "Invalid Salon Password", regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}$")
+	@Pattern(message = "Invalid Salon Password", regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8,20}$")
 	@Column(name="salonpassword", nullable=false)
 	private String salonpassword;
 
@@ -79,7 +79,7 @@ public class Salon {
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "salon", cascade = CascadeType.ALL)
-	private List<Service> service;
+	private List<Services> services;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "salon", cascade = CascadeType.ALL)
@@ -202,6 +202,31 @@ public Salon() {
 
 	public void setSalonpassword(String salonpassword) {
 		this.salonpassword = salonpassword;
+	}
+	
+
+	public List<Stylist> getStylist() {
+		return stylist;
+	}
+
+	public void setStylist(List<Stylist> stylist) {
+		this.stylist = stylist;
+	}
+
+	public List<Services> getServices() {
+		return services;
+	}
+
+	public void setServices(List<Services> services) {
+		this.services = services;
+	}
+
+	public List<Appointment> getAppointment() {
+		return appointment;
+	}
+
+	public void setAppointment(List<Appointment> appointment) {
+		this.appointment = appointment;
 	}
 
 	@Override

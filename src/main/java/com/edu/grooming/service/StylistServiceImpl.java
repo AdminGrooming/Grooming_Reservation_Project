@@ -1,5 +1,7 @@
 package com.edu.grooming.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +31,14 @@ public class StylistServiceImpl implements StylistService{
 		stylist.updateStylistSalon(salon);
 		return stylistRepository.save(stylist);
 	}
+
+	@Override
+	public List<Stylist> getAllStylist() {
+		// TODO Auto-generated method stub
+		return stylistRepository.findAll();
+	}
+
+	
 
 
 }

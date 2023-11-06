@@ -1,11 +1,11 @@
 ********* Add User *********
 {
-    "userid": 1,
+     "userid": 1,
     "userfirstname": "Akash",
     "userlastname": "Hedau",
     "useremail": "akash@gmail.com",
     "userphonenumber": "8308985621",
-    "userpassword": "1234"
+    "userpassword": "Akash@8308"
 }
 
 ********* Add Address *********
@@ -18,23 +18,23 @@
     "country": "India"
 }
 
-********* Add Address *********
+********* Add Salon *********
 
 {
     "salonname" : "Vaishnavi's salon",
-    "salonaddress": ",saat rasta, solapur",
+    "salonaddress": "Saat rasta, solapur",
     "saloncity": "Solapur",
     "salonpincode": "413003",
     "salonstate": "maha",
     "salonphone": "8308985621",
     "salonemailid": "salon1@gmail.com",
-    "salonopeninghours": "2001-01-01",
+    "salonopeninghours": "mon-fri 9:00-5:00",
     "salondescription": "testing salon",
     "salonrating": "5",
-    "salonpassword": "salon123"
+    "salonpassword": "Salon@123"
 }
 
-********* Add Address *********
+********* Add Stylist *********
 
 {
     "firstname" : "Akash",
@@ -42,12 +42,29 @@
     "stylistphonenum" : "8308985621",
     "stylistemail" : "akash@gmail.com",
     "stylistspecialization" : "fire cutting",
-    "stylistrating" : "10"
+    "stylistrating" : "4"
+}
+********* Add Appointment *********
+{
+    "appointmentDate": "2023-10-28",
+    "appointmentStartTime": "22:00:00",
+    "appointmentEndTime": "23:00:00",
+    "appointmentStatus": "pending",
+    "appointmentType": "walking"
 }
 
-********* Add Address *********
+
+********* Add service *********
 {
-    "servicename" : "makeup",
-    "servicdesc" : "full free makeup",
-    "serviceprice" : "10000"
+    "servicesname" : "Makeup",
+    "servicesdescription" : "50% off on makeup",
+    "servicesprice" : "10000",
+    "servicesgendertype" : "female"
+}
+
+******admin*******
+{
+"adminName":"admin",
+"adminEmail":"groomingreservation@gmail.com",
+"adminPassword":"Admin@123"
 }

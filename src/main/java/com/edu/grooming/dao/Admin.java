@@ -26,7 +26,7 @@ public class Admin {
 	private String adminEmail;
 	
 	@NotBlank(message = "Admin Password should not be empty")
-	@Pattern(message = "Invalid Admin Password", regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}$")
+	@Pattern(message = "Invalid Admin Password", regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8,20}$")
 	@Column(name="adminPassword", nullable=false, length=20)
 	private String adminPassword;
 
@@ -37,9 +37,9 @@ public class Admin {
 
 
 	public Admin(
-			@NotBlank(message = "Admin Name should not be null") @Pattern(message = "Invalid Admin Name", regexp = "^[A-Za-z]+$") String adminName,
-			@NotBlank(message = "Admin Email Should not be null") @Email(message = "Invalid Admin Email", regexp = "^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\\.[a-zA-Z.]{2,5}") String adminEmail,
-			@NotBlank(message = "Admin Password should not be empty") @Pattern(message = "Invalid Admin Password", regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}$") String adminPassword) {
+			 String adminName,
+			 String adminEmail,
+			 String adminPassword) {
 		super();
 		this.adminName = adminName;
 		this.adminEmail = adminEmail;

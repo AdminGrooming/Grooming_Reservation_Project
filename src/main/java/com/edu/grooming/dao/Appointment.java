@@ -55,8 +55,8 @@ public class Appointment {
 	private Stylist stylist;
 	
 	@ManyToOne
-	@JoinColumn(name = "serviceid")
-	private Service service;
+	@JoinColumn(name = "servicesid")
+	private Services services;
 
 	public Appointment() {
 		super();
@@ -64,11 +64,11 @@ public class Appointment {
 
 
 	public Appointment(
-			@NotNull(message = "Appointment Date should not be empty") @FutureOrPresent LocalDate appointmentDate,
-			@NotNull(message = "Appointment Starttime should not be empty") @FutureOrPresent LocalTime appointmentStartTime,
-			@NotNull(message = "Appointment Endtime should not be empty") @FutureOrPresent LocalTime appointmentEndTime,
-			@NotBlank(message = "Appointment Status Should not be empty") String appointmentStatus,
-			@NotBlank(message = "Appointment Type Should not be empty") String appointmentType) {
+			 LocalDate appointmentDate,
+			 LocalTime appointmentStartTime,
+			 LocalTime appointmentEndTime,
+			 String appointmentStatus,
+			 String appointmentType) {
 		super();
 		this.appointmentDate = appointmentDate;
 		this.appointmentStartTime = appointmentStartTime;
@@ -151,13 +151,13 @@ public class Appointment {
 	}
 
 
-	public Service getService() {
-		return service;
+	public Services getServices() {
+		return services;
 	}
 
 
-	public void setService(Service service) {
-		this.service = service;
+	public void setServices(Services services) {
+		this.services = services;
 	}
 
 
@@ -188,8 +188,8 @@ public class Appointment {
 	}
 
 
-	public void updateAppointmentStylist(Service service2) {
-		this.service = service2;
+	public void updateAppointmentStylist(Services services2) {
+		this.services = services2;
 		
 	}
 

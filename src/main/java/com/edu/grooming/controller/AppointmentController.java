@@ -24,27 +24,27 @@ public class AppointmentController {
 		return appointmentService.saveAppointment(appointment);
 	}
 
-	@GetMapping("/getAllAppointments") //http://localhost:8990/getAllAppoinments
+	@GetMapping("/getAllAppointments") //http://localhost:8990/getAllAppointments
 	public List<Appointment> getAllAppointments() {
 		return appointmentService.getAllAppointments();
 	}
-
-	@PutMapping("/updateAppointmentUser/{userid}/{appointmentid}")
+	
+	@PutMapping("/updateAppointmentUser/{userid}/{appointmentid}")//http://localhost:8990/updateAppointmentUser/{userid}/{appointmentid}
 	public Appointment updateAppointmentUser(@PathVariable("userid") Integer userid,@PathVariable("appointmentid") Integer appointmentId) {
-		return appointmentService.updateAppointmentUser(userid,appointmentId);
+		return appointmentService.updateAppointmentUser(userid,appointmentId);	
 	}
-
-	@PutMapping("/updateAppointmentSalon/{salonid}/{appointmentid}")
+	
+	@PutMapping("/updateAppointmentSalon/{salonid}/{appointmentid}")//http://localhost:8990/updateAppointmentSalon/{salonid}/{appointmentid}
 	public Appointment updateAppointmentSalon(@PathVariable("salonid") Integer salonid,@PathVariable("appointmentid") Integer appointmentId) {
 		return appointmentService.updateAppointmentSalon(salonid,appointmentId);
 	}
-
-	@PutMapping("/updateAppointmentStylist/{stylistid}/{appointmentid}")
+	
+	@PutMapping("/updateAppointmentStylist/{stylistid}/{appointmentid}")//http://localhost:8990/updateAppointmentStylist/{stylistid}/{appointmentid}
 	public Appointment updateAppointmentStylist(@PathVariable("stylistid") Integer stylistid,@PathVariable("appointmentid") Integer appointmentId) {
 		return appointmentService.updateAppointmentStylist(stylistid,appointmentId);
 	}
-
-	@PutMapping("/updateAppointmentService/{serviceid}/{appointmentid}")
+	
+	@PutMapping("/updateAppointmentService/{serviceid}/{appointmentid}")//http://localhost:8990/updateAppointmentService/{serviceid}/{appointmentid}
 	public Appointment updateAppointmentService(@PathVariable("serviceid") Integer serviceid,@PathVariable("appointmentid") Integer appointmentId) {
 		return appointmentService.updateAppointmentService(serviceid,appointmentId);
 	}
