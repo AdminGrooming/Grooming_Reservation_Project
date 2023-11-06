@@ -110,7 +110,7 @@ public class SalonServiceimpl implements SalonService {
 			if (services1.isEmpty()) {
 				List<Services> services2 = new ArrayList<>();
 				services2.add(servicesRepository.save(services));
-				int id = services.getservicesid();
+				int id = services.getServicesid();
 				Services services3 = servicesRepository.findById(id).get();
 				Salon salon2 = salonRepository.findById(salonid).get();
 				services3.servicesAssignSalon(salon2);
@@ -121,7 +121,7 @@ public class SalonServiceimpl implements SalonService {
 				services1.add(servicesRepository.save(services));
 				System.out.println(services);
 				
-				int id=services.getservicesid();
+				int id=services.getServicesid();
 				
 				Services servicess4=servicesRepository.findById(id).get();
 				Salon salon3=salonRepository.findById(salonid).get();
