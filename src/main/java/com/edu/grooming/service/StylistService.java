@@ -14,4 +14,8 @@ public interface StylistService {
 
 	List<Stylist> getAllStylist();
 
+	List<Stylist> getStylistByRating(Integer stylistrating);
+
+	List<Stylist> getStylistBySpecialization(String stylistspecialization);
+
 }

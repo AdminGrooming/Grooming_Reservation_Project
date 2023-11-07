@@ -50,4 +50,17 @@ public class StylistController {
 	public List<Stylist> getAllStylist() {
 		return stylistService.getAllStylist();
 	}
+	
+	@GetMapping("/getStylistByRating/{rating}") //  http://localhost:8990/getStylistByRating/{rating}
+	public List<Stylist> getStylistByRating(@PathVariable("rating") Integer stylistrating){
+		return stylistService.getStylistByRating(stylistrating);
+		
+	}
+	
+	@GetMapping("/getStylistBySpecialization/{specialization}") // http://localhost:8990/getStylistBySpecialization/{specialization}
+	public List<Stylist> getStylistBySpecialization(@PathVariable("specialization") String stylistspecialization){
+		return stylistService.getStylistBySpecialization(stylistspecialization);
+		
+	}
+	
 }
