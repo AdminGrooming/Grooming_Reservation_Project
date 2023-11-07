@@ -38,6 +38,20 @@ public class StylistServiceImpl implements StylistService{
 		return stylistRepository.findAll();
 	}
 
+	@Override
+	public List<Stylist> getStylistByRating(Integer stylistrating) {
+		
+		return stylistRepository.findByStylistrating(stylistrating); 
+	}
+
+	@Override
+	public List<Stylist> getStylistBySpecialization(String stylistspecialization) {
+		// TODO Auto-generated method stub
+		return stylistRepository.findByStylistspecialization(stylistspecialization);
+	}
+	
+	
+
 	
 
 
