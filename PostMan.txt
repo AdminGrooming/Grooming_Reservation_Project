@@ -22,7 +22,7 @@
 
 {
     "salonname" : "Vaishnavi's salon",
-    "salonaddress": ",saat rasta, solapur",
+    "salonaddress": "Saat rasta, solapur",
     "saloncity": "Solapur",
     "salonpincode": "413003",
     "salonstate": "maha",
@@ -56,9 +56,10 @@
 
 ********* Add service *********
 {
-    "servicesname" : "makeup",
-    "servicdesc" : "full free makeup",
-    "servicesprice" : "10000"
+    "servicesname" : "Makeup",
+    "servicesdescription" : "50% off on makeup",
+    "servicesprice" : "10000",
+    "servicesgendertype" : "female"
 }
 
 ******admin*******
