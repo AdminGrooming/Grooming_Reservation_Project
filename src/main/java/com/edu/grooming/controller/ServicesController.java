@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.edu.grooming.dao.Services;
+import com.edu.grooming.service.ServicesService;
 import com.edu.grooming.error.NotFoundException;
 import com.edu.grooming.service.ServicesService;
+
 
 
 @RestController
@@ -25,6 +27,7 @@ public class ServicesController {
 	public Services saveServices(@RequestBody Services services){
 		return servicesService.saveServices(services);
 	}
+
 
 	@PutMapping("/updateservicesSalon/{servicesid}/{salonid}") // http://localhost:8990/updateservicesSalon/
 	public Services updateServicesSalon(@PathVariable("servicesid") Integer servicesid, @PathVariable("salonid") Integer salonid) {
@@ -46,5 +49,6 @@ public class ServicesController {
 		return servicesService.getServicesByGender(servicesgendertype);
 	}
 	
+
 	
 }
