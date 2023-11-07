@@ -23,7 +23,7 @@ public class Services {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer servicesid;
 
-	@NotBlank(message = "services Name Should not be null")
+	@NotBlank(message = "Services Name Should not be null")
 	@Column(name = "servicesname", length = 100, nullable = false)
 	private String servicesname;
 
@@ -34,6 +34,11 @@ public class Services {
 	@Max(200000)
 	@Column(nullable = false, name = "servicesprice")
 	private double servicesprice;
+	
+	@NotBlank(message = "Service gender type cannot be blank")
+	@Column(nullable = false, name = "servicesgendertype", length = 6)
+	private String servicesgendertype;
+	
 
 	@ManyToOne
 	@JoinColumn(name = "salonid")
@@ -45,54 +50,74 @@ public class Services {
 
 	public Services() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Services(String servicesname, String servicesdescription, double servicessprice) {
+	public Services(String servicesname, String servicesdescription, double servicesprice, String servicesgendertype) {
 		super();
 		this.servicesname = servicesname;
 		this.servicesdescription = servicesdescription;
 		this.servicesprice = servicesprice;
+		this.servicesgendertype = servicesgendertype;
 	}
-
-	public Integer getservicesid() {
+	
+	
+	public Integer getServicesid() {
 		return servicesid;
 	}
 
-	public void setservicesid(Integer servicesid) {
+	public void setServicesid(Integer servicesid) {
 		this.servicesid = servicesid;
 	}
 
-	public String getservicesname() {
+	public String getServicesname() {
 		return servicesname;
 	}
 
-	public void setservicesname(String servicesname) {
+	public void setServicesname(String servicesname) {
 		this.servicesname = servicesname;
 	}
 
-	public String getServicdesc() {
+	public String getServicesdescription() {
 		return servicesdescription;
 	}
 
-	public void setServicdesc(String servicesdescription) {
+	public void setServicesdescription(String servicesdescription) {
 		this.servicesdescription = servicesdescription;
 	}
 
-	public double getservicesprice() {
+	public double getServicesprice() {
 		return servicesprice;
 	}
 
-	public void setservicesprice(double servicesprice) {
+	public void setServicesprice(double servicesprice) {
 		this.servicesprice = servicesprice;
 	}
 
-	@Override
-	public String toString() {
-		return "services [servicesid=" + servicesid + ", servicesname=" + servicesname + ", servicdesc=" + servicesdescription
-				+ ", servicesprice=" + servicesprice + "]";
+	public String getServicesgendertype() {
+		return servicesgendertype;
 	}
 
+	public void setServicesgendertype(String servicesgendertype) {
+		this.servicesgendertype = servicesgendertype;
+	}
+
+	public List<Appointment> getAppointment() {
+		return appointment;
+	}
+
+	public void setAppointment(List<Appointment> appointment) {
+		this.appointment = appointment;
+	}
+
+	
+	@Override
+	public String toString() {
+		return "Services [servicesid=" + servicesid + ", servicesname=" + servicesname + ", servicesdescription="
+				+ servicesdescription + ", servicesprice=" + servicesprice + ", servicesgendertype="
+				+ servicesgendertype + "]";
+	}
+
+	
 	public Salon getSalon() {
 		return salon;
 	}
@@ -106,9 +131,7 @@ public class Services {
 	}
 
 	public void servicesAssignSalon(Salon salon2) {
-		// TODO Auto-generated method stub
 		this.salon = salon2;
-
 	}
 
 }

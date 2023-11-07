@@ -37,18 +37,15 @@ public class AppointmentController {
 	@PutMapping("/updateAppointmentSalon/{salonid}/{appointmentid}")//http://localhost:8990/updateAppointmentSalon/{salonid}/{appointmentid}
 	public Appointment updateAppointmentSalon(@PathVariable("salonid") Integer salonid,@PathVariable("appointmentid") Integer appointmentId) {
 		return appointmentService.updateAppointmentSalon(salonid,appointmentId);
-		
 	}
 	
 	@PutMapping("/updateAppointmentStylist/{stylistid}/{appointmentid}")//http://localhost:8990/updateAppointmentStylist/{stylistid}/{appointmentid}
 	public Appointment updateAppointmentStylist(@PathVariable("stylistid") Integer stylistid,@PathVariable("appointmentid") Integer appointmentId) {
 		return appointmentService.updateAppointmentStylist(stylistid,appointmentId);
-		
 	}
 	
 	@PutMapping("/updateAppointmentService/{serviceid}/{appointmentid}")//http://localhost:8990/updateAppointmentService/{serviceid}/{appointmentid}
 	public Appointment updateAppointmentService(@PathVariable("serviceid") Integer serviceid,@PathVariable("appointmentid") Integer appointmentId) {
 		return appointmentService.updateAppointmentService(serviceid,appointmentId);
 	}
-	
 }
