@@ -17,7 +17,7 @@ import com.edu.grooming.service.ServicesService;
 
 
 @RestController
-public class servicesController {
+public class ServicesController {
 
 	@Autowired
 	private ServicesService servicesService;
