@@ -17,10 +17,10 @@ public interface UserService {
 
 	User updateUserById(Integer userid, @Valid User user) throws NotFoundException;
 
-	User getCustomerByEmail(String useremail, String userpassword);
-
 	User getUserById(Integer userid) throws NotFoundException;
 
 	User getUserByEmailid(String useremail) ;
+
+	User getUserByEmail(String useremail, String userpassword);
 
 }

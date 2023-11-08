@@ -1,10 +1,8 @@
 package com.edu.grooming.service;
 
 import java.util.List;
-
-import org.springframework.stereotype.Service;
-
 import com.edu.grooming.dao.Stylist;
+import com.edu.grooming.error.NotFoundException;
 
 public interface StylistService {
 
@@ -17,5 +15,7 @@ public interface StylistService {
 	List<Stylist> getStylistByRating(Integer stylistrating);
 
 	List<Stylist> getStylistBySpecialization(String stylistspecialization);
+
+	List<Stylist> deleteStylistById(Integer stylistid) throws NotFoundException;
 
 }

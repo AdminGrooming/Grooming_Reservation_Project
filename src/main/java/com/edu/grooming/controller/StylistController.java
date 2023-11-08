@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.edu.grooming.dao.Stylist;
 import com.edu.grooming.error.BadRequestException;
+import com.edu.grooming.error.NotFoundException;
 import com.edu.grooming.repository.StylistRepository;
 import com.edu.grooming.service.StylistService;
 
@@ -62,5 +64,11 @@ public class StylistController {
 		return stylistService.getStylistBySpecialization(stylistspecialization);
 		
 	}
+	
+//	@DeleteMapping("/deleteStylistById/{id}")
+//	public List<Stylist> deleteStylistById(@PathVariable("id") Integer stylistid) throws NotFoundException {
+//		return stylistService.deleteStylistById(stylistid) ;
+//		
+//	}
 	
 }

@@ -1,12 +1,15 @@
 package com.edu.grooming.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.edu.grooming.dao.Salon;
 import com.edu.grooming.dao.Stylist;
+import com.edu.grooming.error.NotFoundException;
+import com.edu.grooming.repository.AppointmentRepository;
 import com.edu.grooming.repository.SalonRepository;
 import com.edu.grooming.repository.StylistRepository;
 
@@ -17,6 +20,9 @@ public class StylistServiceImpl implements StylistService{
 	
 	@Autowired
 	private SalonRepository salonRepository;
+	
+	@Autowired
+	private AppointmentRepository appointmentRepository;
 	
 	@Override
 	public Stylist addStylist(Stylist stylist) {
@@ -48,6 +54,18 @@ public class StylistServiceImpl implements StylistService{
 	public List<Stylist> getStylistBySpecialization(String stylistspecialization) {
 		// TODO Auto-generated method stub
 		return stylistRepository.findByStylistspecialization(stylistspecialization);
+	}
+
+	@Override
+	public List<Stylist> deleteStylistById(Integer stylistid) throws NotFoundException {
+		// TODO Auto-generated method stub
+		Optional<Stylist> stylist=stylistRepository.findById(stylistid);
+		if(!stylist.isPresent()) {
+			throw new NotFoundException("stylist not found");
+		}
+		//appointmentRepository.
+		
+		return null;
 	}
 	
 	

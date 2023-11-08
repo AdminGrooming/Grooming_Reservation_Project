@@ -68,8 +68,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User getCustomerByEmail(String useremail, String userpassword) {
-		User user=userRepository.getCustomerByEmail(useremail,userpassword);
+	public User getUserByEmail(String useremail, String userpassword) {
+		User user=userRepository.getUserByEmail(useremail,userpassword);
 		return user;
 	}
 

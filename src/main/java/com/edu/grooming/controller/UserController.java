@@ -62,9 +62,9 @@ public class UserController {
 		return userService.updateUserById(userid,user);
 	}
 	
-	@GetMapping("/getCustomerByEmail/{email}/{password}") //http://localhost:8990/getCustomerByEmail/{email}/{password}
-	public User getCustomerByEmail(@PathVariable("email") String useremail,@PathVariable("password") String userpassword) {
-		return userService.getCustomerByEmail(useremail,userpassword);
+	@GetMapping("/getUserByEmail/{email}/{password}") //http://localhost:8990/getCustomerByEmail/{email}/{password}
+	public User getUserByEmail(@PathVariable("email") String useremail,@PathVariable("password") String userpassword) {
+		return userService.getUserByEmail(useremail,userpassword);
 	}
 	
 	@GetMapping("/getUserById/{userid}") //http://localhost:8990/getUserById/{userid}
