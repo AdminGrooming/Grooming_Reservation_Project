@@ -3,7 +3,7 @@ package com.edu.grooming.service;
 import java.util.List;
 
 import com.edu.grooming.dao.Appointment;
-import com.edu.grooming.dao.User;
+
 
 public interface AppointmentService {
 

@@ -1,7 +1,5 @@
 package com.edu.grooming.repository;
 
-import java.util.Optional;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -23,9 +21,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
 	
 	@Query(value="select * from user where useremail=?1 and userpassword=?2",nativeQuery = true)
-	User getCustomerByEmail(String useremail, String userpassword);
+	User getUserByEmail(String useremail, String userpassword);
 
-	@Query(value="select * from user where useremail-?1",nativeQuery = true)
+	@Query(value="select * from user where useremail=?1",nativeQuery = true)
 	User getUserByEmailid(String useremail);
 
 	
