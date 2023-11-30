@@ -70,9 +70,12 @@ public class Salon {
 	private String salonrating;
 	
 	@Pattern(message = "Invalid Salon Password", regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8,20}$")
-	@Column(name="salonpassword", nullable=false)
+	@Column(name="salonpassword",nullable=false)
 	private String salonpassword;
 
+	@Column(name="salonstatus",length=20,nullable=false)
+	private String salonstatus;
+	 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "salon", cascade = CascadeType.ALL)
 	private List<Stylist> stylist;
@@ -93,7 +96,7 @@ public Salon() {
 
 	public Salon(String salonname, String salonaddress, String saloncity, String salonpincode, String salonstate,
 			String salonphone, String salonemailid, String salonopeninghours, String salondescription,
-			String salonrating, String salonpassword) {
+			String salonrating, String salonpassword,String salonstatus) {
 		super();
 		this.salonname = salonname;
 		this.salonaddress = salonaddress;
@@ -106,6 +109,7 @@ public Salon() {
 		this.salondescription = salondescription;
 		this.salonrating = salonrating;
 		this.salonpassword = salonpassword;
+		this.salonstatus = salonstatus;
 	}
 
 	public Integer getSalonid() {
@@ -204,6 +208,13 @@ public Salon() {
 		this.salonpassword = salonpassword;
 	}
 	
+	public String getSalonstatus() {
+		return salonstatus;
+	}
+
+	public void setSalonstatus(String salonstatus) {
+		this.salonstatus = salonstatus;
+	}
 
 	public List<Stylist> getStylist() {
 		return stylist;
@@ -233,10 +244,13 @@ public Salon() {
 	public String toString() {
 		return "Salon [salonid=" + salonid + ", salonname=" + salonname + ", salonaddress=" + salonaddress
 				+ ", saloncity=" + saloncity + ", salonpincode=" + salonpincode + ", salonstate=" + salonstate
-				+ ", salonPhone=" + salonphone + ", salonemailid=" + salonemailid + ", salonopeninghours="
+				+ ", salonphone=" + salonphone + ", salonemailid=" + salonemailid + ", salonopeninghours="
 				+ salonopeninghours + ", salondescription=" + salondescription + ", salonrating=" + salonrating
-				+ ", salonpassword=" + salonpassword + "]";
+				+ ", salonpassword=" + salonpassword + ", salonstatus=" + salonstatus + "]";
 	}
+
+	
+	
 
 
 }

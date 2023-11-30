@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,12 +16,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.edu.grooming.error.BadRequestException;
+
+import com.edu.grooming.error.ConflictException;
 import com.edu.grooming.error.NotFoundException;
 import com.edu.grooming.dao.User;
 import com.edu.grooming.repository.UserRepository;
 import com.edu.grooming.service.UserService;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class UserController {
 
@@ -29,20 +32,19 @@ public class UserController {
 	
 	@Autowired
 	private UserRepository userRepository;
-
+	
 	@PostMapping("/addUser") //http://localhost:8990/addUser
-	public ResponseEntity<User> addUser(@Valid @RequestBody User user) throws BadRequestException {
+	public ResponseEntity<String> addUser(@Valid @RequestBody User user) throws ConflictException {
 		
 		User user1 = userRepository.findByUseremailOrUserphonenumber(user.getUseremail(),user.getUserphonenumber());
 		if(user1 != null) {
-			System.out.println("User already exist!");
-		     throw new BadRequestException("User already exist!");
-			 
+			
+			throw new ConflictException("The provided email address is already registered. Please use a different email.");
+	 
 		}
 		
-		User user2 = userService.addUser(user);
-		
-		return new ResponseEntity<User>(user2 ,HttpStatus.CREATED);
+		userService.addUser(user);		
+		return new ResponseEntity<String>(HttpStatus.CREATED);
 
 	}
 	
@@ -62,9 +64,18 @@ public class UserController {
 		return userService.updateUserById(userid,user);
 	}
 	
-	@GetMapping("/getUserByEmail/{email}/{password}") //http://localhost:8990/getCustomerByEmail/{email}/{password}
-	public User getUserByEmail(@PathVariable("email") String useremail,@PathVariable("password") String userpassword) {
-		return userService.getUserByEmail(useremail,userpassword);
+	@GetMapping("/getUserByEmailPassword/{email}/{password}") //http://localhost:8990/getUserByEmail/{email}/{password}
+	public ResponseEntity<User> getUserByEmailPassword(@PathVariable("email") String useremail,@PathVariable("password") String userpassword) {
+		
+		User user = userRepository.getUserByEmail(useremail, userpassword);
+		if(user==null) {
+			return ResponseEntity.badRequest().body(null);
+		}else {
+			System.out.println("user present");
+			//userService.getUserByEmail(useremail,userpassword);
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(user); 
+		}
+		
 	}
 	
 	@GetMapping("/getUserById/{userid}") //http://localhost:8990/getUserById/{userid}
@@ -74,8 +85,17 @@ public class UserController {
 	}
 	
 	@GetMapping("/getUserByEmailid/{emailid}") //http://localhost:8990/getUserByEmailid/{emailid}
-	public User getUserByEmailid(@PathVariable("emailid") String useremail, @RequestBody User user)  {
-		return userService.getUserByEmailid(useremail);
+	public ResponseEntity<User> getUserByEmailid(@PathVariable("emailid") String useremail)  {
+		User user1 = userRepository.getUserByEmailid(useremail);
+		if(user1==null) {
+			return ResponseEntity.badRequest().body(null);
+			//return (ResponseEntity<User>) ResponseEntity.status(HttpStatus.NOT_FOUND);
+		}else {
+			//userService.getUserByEmailid(useremail);
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(user1); 
+		}
+		
+		
 		
 	}
 	
