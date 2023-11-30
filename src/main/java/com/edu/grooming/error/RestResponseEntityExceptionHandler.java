@@ -26,5 +26,11 @@ public class RestResponseEntityExceptionHandler {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
 	}
 	
+	@ExceptionHandler(ConflictException.class)
+	public ResponseEntity<ErrorMessage> conflictException(ConflictException exception,WebRequest request) {
+		ErrorMessage message = new ErrorMessage(HttpStatus.CONFLICT,exception.getMessage());
+		return ResponseEntity.status(HttpStatus.CONFLICT).body(message);
+	}
+	
 
 }

@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,10 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.edu.grooming.dao.Salon;
 import com.edu.grooming.dao.Services;
 import com.edu.grooming.error.BadRequestException;
+import com.edu.grooming.error.ConflictException;
 import com.edu.grooming.error.NotFoundException;
 import com.edu.grooming.repository.SalonRepository;
 import com.edu.grooming.service.SalonService;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class SalonController {
 
@@ -32,11 +35,11 @@ public class SalonController {
 	private SalonRepository salonRepository;
 
 	@PostMapping("/saveSalon") //http://localhost:8990/saveSalon
-	public ResponseEntity<Salon> saveSalon(@Valid @RequestBody Salon salon) throws BadRequestException {
+	public ResponseEntity<Salon> saveSalon(@Valid @RequestBody Salon salon) throws ConflictException {
 		Salon salon1 = salonRepository.findBySalonemailidOrSalonphone(salon.getSalonemailid(),salon.getSalonphone());
 		if(salon1!=null) {
-			System.out.println("Email and phonenumber already exist!");
-			throw new BadRequestException("Salon already exist!");
+			
+			throw new ConflictException("The provided email address is already registered. Please use a different email.");
 		}
 		
 		Salon salon2 = salonService.saveSalon(salon);
@@ -55,6 +58,19 @@ public class SalonController {
 		return salonService.getSalonByName(salonname);
 	}
 	
+	@GetMapping("/getSalonByEmailPassword/{email}/{password}") //http://localhost:8990/getSalonByEmail/{email}/{password}
+	public ResponseEntity<Salon> getSalonByEmailPassword(@PathVariable("email") String salonemailid,@PathVariable("password") String salonpassword) {
+		
+		Salon salon = salonRepository.getSalonByEmail(salonemailid, salonpassword);
+		if(salon==null) {
+			return ResponseEntity.badRequest().body(null);
+		}else {
+			System.out.println("salon present");
+			//userService.getUserByEmail(useremail,userpassword);
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(salon); 
+		}
+		
+	}
 	@DeleteMapping("/deleteSalonByid/{id}") // http://localhost:8990/deleteSalonByid/{id}
 	public String deleteSalonByid(@PathVariable("id") Integer salonid) throws NotFoundException {
 		return salonService.deleteSalonByid(salonid);
