@@ -8,7 +8,8 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.edu.grooming.dao.Address;
+import com.edu.grooming.dao.Salon;
 import com.edu.grooming.dao.User;
 import com.edu.grooming.error.NotFoundException;
 import com.edu.grooming.repository.AddressRepository;
@@ -35,15 +36,15 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<User> getAllUser() {
-		// TODO Auto-generated method stub
 		return userRepository.findAll();
 	}
 
 	@Override
 	public List<User> deleteUserById(Integer userid) {
-		appointmentRepository.deleteOrderByUserId(userid);
-		addressRepository.deleteAddressByUserId(userid);
-		userRepository.deleteUserById(userid);
+		//appointmentRepository.deleteOrderByUserId(userid);
+		//addressRepository.deleteAddressByUserId(userid);
+		//userRepository.deleteUserById(userid);
+		userRepository.updateUserisDeleted(userid);
 		return userRepository.findAll();
 	}
 
@@ -98,6 +99,29 @@ public class UserServiceImpl implements UserService {
 		return user;
 		
 		
+	}
+
+	@Override
+	public User enableUserById(Integer userid) {
+		User user=userRepository.findById(userid).get();
+		if(user != null) {
+			user.setUserisDeleted(false);	
+			return userRepository.save(user);
+		}
+		return user;
+	}
+
+	@Override
+	public List<User> searchUserlike(String value) {
+		return userRepository.searchUser(value);
+	}
+
+	@Override
+	public List<User> searchUserByIsDeleted(String value) {
+		if(value.equals("Enabled")) 
+			return userRepository.searchUserByIsDeleted(false);			
+		else
+			return userRepository.searchUserByIsDeleted(true);
 	}
 	
 }

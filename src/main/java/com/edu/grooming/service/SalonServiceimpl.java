@@ -32,9 +32,15 @@ public class SalonServiceimpl implements SalonService {
 	}
 
 	@Override
-	public List<Salon> getSalon() {
+	public List<Salon> getAllSalon() {
 		// TODO Auto-generated method stub
 		return salonRepository.findAll();
+	}
+	
+	@Override
+	public List<Salon> getAllEnabledSalon() {
+		// TODO Auto-generated method stub
+		return salonRepository.findAllEnabled();
 	}
 
 	@Override
@@ -46,15 +52,15 @@ public class SalonServiceimpl implements SalonService {
 	}
 
 	@Override
-	public String deleteSalonByid(Integer salonid) throws NotFoundException {
-		Optional<Salon> salon1 = salonRepository.findById(salonid);
-		if (salon1.isPresent()) {
-			salonRepository.deleteById(salonid);
+	public Salon deleteSalonByid(Integer salonid) throws NotFoundException {
+		Salon salon1 = salonRepository.findById(salonid).get();
+		if (salon1!=null) {
+			salon1.setSalonstatus("Deleted");
+			System.out.println(salon1);
+			return salonRepository.save(salon1);
 		} else {
 			throw new NotFoundException("Salon is not found");
 		}
-
-		return "Salon is deleted";
 	}
 
 	@Override
@@ -68,31 +74,22 @@ public class SalonServiceimpl implements SalonService {
 			throw new NotFoundException("Salon does not exist");
 		} else {
 			salon2 = salonRepository.findById(salonid).get();
-
 			salon2.setSalonaddress(salon.getSalonaddress());
-
 			salon2.setSaloncity(salon.getSaloncity());
-
 			salon2.setSalondescription(salon.getSalondescription());
-
 			salon2.setSalonemailid(salon.getSalonemailid());
-
 			salon2.setSalonname(salon.getSalonname());
-
 			salon2.setSalonopeninghours(salon.getSalonopeninghours());
-
 			salon2.setSalonpassword(salon.getSalonpassword());
-
 			salon2.setSalonphone(salon.getSalonphone());
-
 			salon2.setSalonpincode(salon.getSalonpincode());
-
 			salon2.setSalonrating(salon.getSalonrating());
-
 			salon2.setSalonstate(salon.getSalonstate());
+			salon2.setSalonstatus(salon.getSalonstatus());
+			salon2.setSaloncategory(salon.getSaloncategory());
+			salon2.setSalonpicurl(salon.getSalonpicurl());
 
 		}
-
 		return salonRepository.save(salon2);
 	}
 
@@ -129,11 +126,29 @@ public class SalonServiceimpl implements SalonService {
 				
 				servicesRepository.save(servicess4);
 				return salon1;
-				
-				
-				
+
 			}
 		}
 		
 	}
+
+	@Override
+	public Salon getSalonById(Integer salonId) {
+		Salon salon = salonRepository.getSalonById(salonId);
+		return salon;
+	}
+
+	@Override
+	public List<Salon> searchSalon(String value) {
+		return salonRepository.searchSalon(value);
+	}
+
+	@Override
+	public List<Salon> searchSalonByStatus(String value) {
+		return salonRepository.searchSalonByStatus(value);
+	}
+
+	
+	
+
 }

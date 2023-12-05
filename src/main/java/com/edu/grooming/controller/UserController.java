@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.edu.grooming.error.ConflictException;
 import com.edu.grooming.error.NotFoundException;
+import com.edu.grooming.dao.Salon;
 import com.edu.grooming.dao.User;
 import com.edu.grooming.repository.UserRepository;
 import com.edu.grooming.service.UserService;
@@ -53,10 +54,9 @@ public class UserController {
 		return userService.getAllUser();
 	}
 	
-	@DeleteMapping("/deleteUserById/{userid}") // http://localhost:/deleteUserById/{userid}
-	public List<User> deleteUserById(@PathVariable("userid") Integer userid, @Valid @RequestBody User user){
+	@DeleteMapping("/deleteUserById/{userid}") // http://localhost:8990/deleteUserById/{userid}
+	public List<User> deleteUserById(@PathVariable("userid") Integer userid){
 		return userService.deleteUserById(userid);
-		
 	}
 	
 	@PutMapping("/updateUserById/{userid}") //http://localhost:8990/updateUserById/{userid}
@@ -70,12 +70,19 @@ public class UserController {
 		User user = userRepository.getUserByEmail(useremail, userpassword);
 		if(user==null) {
 			return ResponseEntity.badRequest().body(null);
-		}else {
-			System.out.println("user present");
-			//userService.getUserByEmail(useremail,userpassword);
+		}
+		else if(user.isUserisDeleted()){
+			return ResponseEntity.badRequest().body(null);
+		}
+		else {
 			return ResponseEntity.status(HttpStatus.ACCEPTED).body(user); 
 		}
 		
+	}
+	
+	@GetMapping("/enableUserById/{userid}") //http://localhost:8990/enableUserById/{userid}
+	public User enableUserById(@PathVariable("userid") Integer userid ) throws NotFoundException {
+		return userService.enableUserById(userid);
 	}
 	
 	@GetMapping("/getUserById/{userid}") //http://localhost:8990/getUserById/{userid}
@@ -94,10 +101,16 @@ public class UserController {
 			//userService.getUserByEmailid(useremail);
 			return ResponseEntity.status(HttpStatus.ACCEPTED).body(user1); 
 		}
-		
-		
-		
 	}
 	
+	@GetMapping("/searchUserlike/{value}")//http://localhost:8990/searchUserlike/{value}
+	public List<User> searchSalonlike(@PathVariable("value") String value){
+		return userService.searchUserlike(value);
+	}
+	
+	@GetMapping("/searchUserByIsDeleted/{value}")//http://localhost:8990/searchUserByIsDeleted/{value}
+	public List<User> searchUserByIsDeleted(@PathVariable("value") String value){
+		return userService.searchUserByIsDeleted(value);
+	}
 
 }

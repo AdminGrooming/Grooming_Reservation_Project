@@ -55,6 +55,9 @@ public class User {
 	@Column(name="userpassword", length=20, nullable=false)
 	private String  userpassword;
 	
+	@Column(nullable=false)
+	private boolean userisDeleted;
+	
 	@JsonIgnore
 	@OneToMany(mappedBy="user", cascade=CascadeType.ALL)
 	private Set<Address> address;
@@ -76,6 +79,7 @@ public class User {
 		this.useremail = useremail;
 		this.userphonenumber = userphonenumber;
 		this.userpassword = userpassword;
+		this.userisDeleted = false;
 	}
 
 	public Integer getUserid() {
@@ -125,6 +129,14 @@ public class User {
 	public void setUserpassword(String userpassword) {
 		this.userpassword = userpassword;
 	}
+	
+	public boolean isUserisDeleted() {
+		return userisDeleted;
+	}
+
+	public void setUserisDeleted(boolean userisDeleted) {
+		this.userisDeleted = userisDeleted;
+	}
 
 	public Set<Address> getAddress() {
 		return address;
@@ -138,7 +150,6 @@ public class User {
 	public String toString() {
 		return "User [userid=" + userid + ", userfirstname=" + userfirstname + ", userlastname=" + userlastname
 				+ ", useremail=" + useremail + ", userphonenumber=" + userphonenumber + ", userpassword=" + userpassword
-				+ "]";
+				+ ", userisDeleted="  + ", address=" + address + ", appointment=" + appointment + "]";
 	}
-
 }
