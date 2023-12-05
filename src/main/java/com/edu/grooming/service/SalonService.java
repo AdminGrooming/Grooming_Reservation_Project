@@ -11,15 +11,23 @@ public interface SalonService  {
 
 	Salon saveSalon(Salon salon);
 
-	List<Salon> getSalon();
+	List<Salon> getAllSalon();
 
 	Salon getSalonByName(String salonname);
 
-	String deleteSalonByid(Integer salonid) throws NotFoundException;
+	Salon deleteSalonByid(Integer salonid) throws NotFoundException;
 
 	Salon updateSalonById(Integer salonid,Salon salon) throws NotFoundException;
 
 	Salon saveServicesBySalonId(Services services, Integer salonid) throws NotFoundException;
+
+	Salon getSalonById(Integer salonId);
+
+	List<Salon> searchSalon(String value);
+
+	List<Salon> searchSalonByStatus(String value);
+
+	List<Salon> getAllEnabledSalon();
 
 	
 	

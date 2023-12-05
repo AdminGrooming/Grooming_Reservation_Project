@@ -27,12 +27,12 @@ public class Appointment {
 	private LocalDate appointmentDate;
 
 	@NotNull(message = "Appointment Starttime should not be empty")
-	@Column(name = "appointmentStartTime", nullable = false)
-	private LocalTime appointmentStartTime;
+	@Column(name = "appointmentTime", nullable = false)
+	private LocalTime appointmentTime;
 
-	@NotNull(message = "Appointment Endtime should not be empty")
-	@Column(name = "appointmentEndTime", nullable = false)
-	private LocalTime appointmentEndTime;
+//	@NotNull(message = "Appointment Endtime should not be empty")
+//	@Column(name = "appointmentEndTime", nullable = false)
+//	private LocalTime appointmentEndTime;
 
 	@NotBlank(message = "Appointment Status Should not be empty")
 	@Column(name = "appointmentStatus", nullable = false)
@@ -65,14 +65,12 @@ public class Appointment {
 
 	public Appointment(
 			 LocalDate appointmentDate,
-			 LocalTime appointmentStartTime,
-			 LocalTime appointmentEndTime,
+			 LocalTime appointmentTime,
 			 String appointmentStatus,
 			 String appointmentType) {
 		super();
 		this.appointmentDate = appointmentDate;
-		this.appointmentStartTime = appointmentStartTime;
-		this.appointmentEndTime = appointmentEndTime;
+		this.appointmentTime = appointmentTime;
 		this.appointmentStatus = appointmentStatus;
 		this.appointmentType = appointmentType;
 	}
@@ -91,19 +89,12 @@ public class Appointment {
 	public void setAppointmentDate(LocalDate appointmentDate) {
 		this.appointmentDate = appointmentDate;
 	}
-
-	public LocalTime getAppointmentStartTime() {
-		return appointmentStartTime;
+	
+	public LocalTime getAppointmentTime() {
+		return appointmentTime;
 	}
-	public void setAppointmentStartTime(LocalTime appointmentStartTime) {
-		this.appointmentStartTime = appointmentStartTime;
-	}
-
-	public LocalTime getAppointmentEndTime() {
-		return appointmentEndTime;
-	}
-	public void setAppointmentEndTime(LocalTime appointmentEndTime) {
-		this.appointmentEndTime = appointmentEndTime;
+	public void setAppointmentEndTime(LocalTime appointmentTime) {
+		this.appointmentTime = appointmentTime;
 	}
 
 	public String getAppointmentStatus() {
@@ -164,7 +155,7 @@ public class Appointment {
 	@Override
 	public String toString() {
 		return "Appointment [appointmentId=" + appointmentId + ", appointmentDate=" + appointmentDate
-				+ ", appointmentStartTime=" + appointmentStartTime + ", appointmentEndTime=" + appointmentEndTime
+				+ ", appointmentTime="  + appointmentTime
 				+ ", appointmentStatus=" + appointmentStatus + ", appointmentType=" + appointmentType + "]";
 	}
 

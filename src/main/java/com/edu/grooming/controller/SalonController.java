@@ -47,10 +47,14 @@ public class SalonController {
 		
 	}
 
-	@GetMapping("/getSalon")  // http://localhost:8990/getSalon
-	public List<Salon> getSalon(){
-		return salonService.getSalon();
-		
+	@GetMapping("/getAllSalon")  // http://localhost:8990/getSalon
+	public List<Salon> getAllSalon(){
+		return salonService.getAllSalon();
+	}
+	
+	@GetMapping("/getAllEnabledSalon")
+	public List<Salon> getAllEnabledSalon(){
+		return salonService.getAllEnabledSalon();
 	}
 	
 	@GetMapping("/getSalonByName/name/{name}") // http://localhost:8990/getSalonByName/name/
@@ -64,15 +68,16 @@ public class SalonController {
 		Salon salon = salonRepository.getSalonByEmail(salonemailid, salonpassword);
 		if(salon==null) {
 			return ResponseEntity.badRequest().body(null);
+		}
+		else if((salon.getSalonstatus()).equals("Disabled") || (salon.getSalonstatus()).equals("Applied")){
+			return ResponseEntity.badRequest().body(null);
 		}else {
-			System.out.println("salon present");
-			//userService.getUserByEmail(useremail,userpassword);
 			return ResponseEntity.status(HttpStatus.ACCEPTED).body(salon); 
 		}
 		
 	}
 	@DeleteMapping("/deleteSalonByid/{id}") // http://localhost:8990/deleteSalonByid/{id}
-	public String deleteSalonByid(@PathVariable("id") Integer salonid) throws NotFoundException {
+	public Salon deleteSalonByid(@PathVariable("id") Integer salonid) throws NotFoundException {
 		return salonService.deleteSalonByid(salonid);
 	}
 	
@@ -89,6 +94,19 @@ public class SalonController {
 //		return salonRepository.findById(salonid).get();
 	}
 	
+	@GetMapping("/getSalonById/{salonid}")
+	public Salon getSalonById(@PathVariable("salonid") Integer salonid) throws NotFoundException {
+		return salonService.getSalonById(salonid);
+	}
 	
+	@GetMapping("/searchSalonlike/{value}")//http://localhost:8990/searchSalonlike/{value}
+	public List<Salon> searchSalon(@PathVariable("value") String value){
+		return salonService.searchSalon(value);
+	}
+	
+	@GetMapping("/searchSalonByStatus/{value}")//http://localhost:8990/searchSalonByStatus/{value}
+	public List<Salon> searchSalonByStatus(@PathVariable("value") String value){
+		return salonService.searchSalonByStatus(value);
+	}
 	
 }
