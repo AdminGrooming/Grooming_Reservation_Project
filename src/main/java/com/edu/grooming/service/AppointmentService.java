@@ -26,6 +26,8 @@ public interface AppointmentService {
 
 	List<Appointment> deleteAppointmentByAppointmentId(Integer appointmentId) throws NotFoundException;
 
+	List<Appointment> getAllAppointmentsBySalonId(Integer salonid);
+
 	
 
 }

@@ -148,7 +148,20 @@ public class SalonServiceimpl implements SalonService {
 		return salonRepository.searchSalonByStatus(value);
 	}
 
+	@Override
+	public List<String> getAllSalonCategories() {
+		return salonRepository.getAllSalonCategories();
+	}
 	
+	@Override
+	public List<Salon> getAllEnabledSalonByRatingDesc() {
+		return salonRepository.getAllEnabledSalonByRatingDesc();
+	}
+
+	@Override
+	public List<Salon> getSalonByCategory(String salonCategory) {
+		return salonRepository.getSalonByCategory(salonCategory);
+	}
 	
 
 }
