@@ -106,6 +106,12 @@ public class AppointmentServiceImpl implements AppointmentService{
 		return appointmentRepository.findAll() ;
 	}
 
+	@Override
+	public List<Appointment> getAllAppointmentsBySalonId(Integer salonid) {
+		// TODO Auto-generated method stub
+		return appointmentRepository.findBySalonId(salonid);
+	}
+
 	
 
 }

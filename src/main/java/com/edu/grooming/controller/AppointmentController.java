@@ -37,6 +37,8 @@ public class AppointmentController {
 		return appointment2 ;
 	}
 	
+	
+	
 	@GetMapping("/getAppointmentByAppointmentId/{appointmentid}")
 	public Appointment getAppointmentByAppointmentId(@PathVariable("appointmentid") Integer appointmentId) {
 		return appointmentService.getAppointmentByAppointmentId(appointmentId);
@@ -56,6 +58,11 @@ public class AppointmentController {
 	@GetMapping("/getAllAppointments") //http://localhost:8990/getAllAppointments
 	public List<Appointment> getAllAppointments() {
 		return appointmentService.getAllAppointments();
+	}
+	
+	@GetMapping("/getAllAppointmentsBySalonId/{salonid}")
+	public List<Appointment> getAllAppointmentsBySalonId(@PathVariable("salonid") Integer salonid){
+		return appointmentService.getAllAppointmentsBySalonId(salonid);
 	}
 	
 	@PutMapping("/updateAppointmentUser/{userid}/{appointmentid}")//http://localhost:8990/updateAppointmentUser/{userid}/{appointmentid}

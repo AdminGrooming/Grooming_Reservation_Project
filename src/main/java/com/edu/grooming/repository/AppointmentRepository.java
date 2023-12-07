@@ -21,4 +21,7 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Intege
 	@Query(value="select * from appointment where userid=?1",nativeQuery = true)
 	List<Appointment> getAppointmentByUserId(Integer userid);
 
+	@Query(value="select * from appointment where salonid=?1",nativeQuery=true)
+	List<Appointment> findBySalonId(Integer salonid);
+
 }
